@@ -1,0 +1,87 @@
+/* _adminlte.css — AdminLTE Overrides */
+
+/* Only apply when shield is active */
+html[data-ui-engine="shield"] body {
+  background-color: transparent !important;
+}
+
+html[data-ui-engine="shield"] .wrapper {
+  background-color: transparent !important;
+}
+
+html[data-ui-engine="shield"] .content-wrapper {
+  background: transparent !important;
+}
+
+html[data-ui-engine="shield"] .main-header {
+  background: var(--bg-surface-2) !important;
+  border-bottom: 1px solid var(--border-default) !important;
+}
+
+html[data-ui-engine="shield"] .main-sidebar {
+  background: var(--bg-surface-1) !important;
+  border-inline-end: 1px solid var(--border-subtle) !important;
+}
+
+html[data-ui-engine="shield"] .brand-link {
+  border-bottom: 1px solid var(--border-subtle) !important;
+}
+
+/* Typography Overrides for AdminLTE Elements */
+html[data-ui-engine="shield"] h1, 
+html[data-ui-engine="shield"] h2, 
+html[data-ui-engine="shield"] h3, 
+html[data-ui-engine="shield"] h4, 
+html[data-ui-engine="shield"] h5, 
+html[data-ui-engine="shield"] h6,
+html[data-ui-engine="shield"] .h1, 
+html[data-ui-engine="shield"] .h2, 
+html[data-ui-engine="shield"] .h3, 
+html[data-ui-engine="shield"] .h4, 
+html[data-ui-engine="shield"] .h5, 
+html[data-ui-engine="shield"] .h6 {
+  font-family: var(--font-display) !important;
+}
+
+/* Sidebar navigation overrides */
+html[data-ui-engine="shield"] .nav-sidebar .nav-item > .nav-link {
+  color: var(--text-secondary) !important;
+  border-radius: var(--radius-md) !important;
+  margin: var(--space-1) var(--space-2) !important;
+  transition: var(--transition-base);
+}
+
+html[data-ui-engine="shield"] .nav-sidebar .nav-item > .nav-link:hover {
+  background: var(--bg-surface-3) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-ui-engine="shield"] .nav-sidebar .nav-item > .nav-link.active {
+  background: var(--color-brand-900) !important;
+  color: var(--color-brand-primary) !important;
+  font-weight: var(--weight-medium) !important;
+}
+
+/* Hide or restyle legacy info-box/small-box if needed */
+html[data-ui-engine="shield"] .small-box {
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-base) !important;
+}
+
+/* Remove default borders and backgrounds from old cards if mixed */
+html[data-ui-engine="shield"] .card {
+  background: var(--bg-surface-1) !important;
+  border: 1px solid var(--border-subtle) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: none !important;
+}
+
+html[data-ui-engine="shield"] .card-header {
+  border-bottom: 1px solid var(--border-subtle) !important;
+  background: transparent !important;
+}
+
+html[data-ui-engine="shield"] .card-footer {
+  border-top: 1px solid var(--border-subtle) !important;
+  background: var(--bg-surface-2) !important;
+}

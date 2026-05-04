@@ -1,0 +1,42 @@
+/* _utilities.css — Shield specific utilities */
+
+/* Text colors */
+html[data-ui-engine="shield"] .txt-primary { color: var(--text-primary); }
+html[data-ui-engine="shield"] .txt-secondary { color: var(--text-secondary); }
+html[data-ui-engine="shield"] .txt-tertiary { color: var(--text-tertiary); }
+html[data-ui-engine="shield"] .txt-disabled { color: var(--text-disabled); }
+html[data-ui-engine="shield"] .txt-inverse { color: var(--text-inverse); }
+
+html[data-ui-engine="shield"] .txt-brand { color: var(--color-brand-500); }
+html[data-ui-engine="shield"] .txt-critical { color: var(--color-critical); }
+html[data-ui-engine="shield"] .txt-danger { color: var(--color-danger); }
+html[data-ui-engine="shield"] .txt-warning { color: var(--color-warning); }
+html[data-ui-engine="shield"] .txt-info { color: var(--color-info); }
+html[data-ui-engine="shield"] .txt-success { color: var(--color-success); }
+
+/* Spacing */
+html[data-ui-engine="shield"] .mb-1 { margin-bottom: var(--space-1); }
+html[data-ui-engine="shield"] .mb-2 { margin-bottom: var(--space-2); }
+html[data-ui-engine="shield"] .mb-3 { margin-bottom: var(--space-3); }
+html[data-ui-engine="shield"] .mb-4 { margin-bottom: var(--space-4); }
+html[data-ui-engine="shield"] .mb-6 { margin-bottom: var(--space-6); }
+
+/* Empty States */
+html[data-ui-engine="shield"] .shield-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-12) var(--space-6);
+  text-align: center;
+  color: var(--text-secondary);
+}
+html[data-ui-engine="shield"] .shield-empty-state .icon {
+  width: 48px; height: 48px;
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-4);
+}
+html[data-ui-engine="shield"] .shield-empty-state h4 {
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}

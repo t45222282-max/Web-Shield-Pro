@@ -1,0 +1,253 @@
+/**
+ * shield/layout/_sidebar.css
+ * Sidebar Navigation Layout
+ * Reference: docs/05-layout-and-navigation.md § 2
+ * Depends on: _tokens.css
+ */
+
+html[data-ui-engine="shield"] .shield-sidebar {
+  width: 256px;
+  background: var(--bg-surface-1);
+  border-inline-end: 1px solid var(--border-subtle);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  inset-inline-start: 0;
+  z-index: var(--z-fixed);
+  display: flex;
+  flex-direction: column;
+  transition: width var(--duration-base) var(--ease-out);
+  overflow: hidden;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed {
+  width: 64px;
+}
+
+/* ── Brand Header ── */
+html[data-ui-engine="shield"] .shield-sidebar__header {
+  height: 56px;
+  min-height: 56px;
+  padding: 0 var(--space-4);
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  text-decoration: none;
+  color: var(--text-primary);
+  font-family: var(--font-display);
+  font-size: var(--text-base);
+  font-weight: var(--weight-semibold);
+  white-space: nowrap;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__brand .icon {
+  color: var(--color-brand-primary);
+  flex-shrink: 0;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-sidebar__brand-text {
+  display: none;
+}
+
+/* ── Body ── */
+html[data-ui-engine="shield"] .shield-sidebar__body {
+  padding: var(--space-3) var(--space-2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex-grow: 1;
+}
+
+/* ── Nav List ── */
+html[data-ui-engine="shield"] .shield-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+html[data-ui-engine="shield"] .shield-nav__title {
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-tertiary);
+  font-weight: var(--weight-bold);
+  padding: var(--space-3) var(--space-2) var(--space-1);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-nav__title {
+  visibility: hidden;
+}
+
+html[data-ui-engine="shield"] .shield-nav__item {
+  position: relative;
+}
+
+html[data-ui-engine="shield"] .shield-nav__link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  transition: var(--transition-base);
+  white-space: nowrap;
+  overflow: hidden;
+  position: relative;
+}
+
+html[data-ui-engine="shield"] .shield-nav__link:hover {
+  background: var(--bg-surface-3);
+  color: var(--text-primary);
+}
+
+/* Active State — with neon left border */
+html[data-ui-engine="shield"] .shield-nav__link.is-active {
+  background: linear-gradient(90deg, rgba(0, 184, 230, 0.10) 0%, rgba(0, 184, 230, 0.02) 100%);
+  color: var(--text-primary);
+  font-weight: var(--weight-medium);
+}
+
+html[data-ui-engine="shield"] .shield-nav__link.is-active::before {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  top: 6px;
+  bottom: 6px;
+  width: 3px;
+  background: var(--color-brand-primary);
+  border-radius: 0 var(--radius-xs) var(--radius-xs) 0;
+  box-shadow: var(--glow-brand);
+}
+
+html[data-ui-engine="shield"] .shield-nav__link.is-active .icon {
+  color: var(--color-brand-primary);
+}
+
+/* Collapsed: icons only, tooltip on hover */
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-nav__link {
+  justify-content: center;
+  padding: var(--space-2);
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-nav__link span,
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-nav__link .shield-badge {
+  display: none;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-nav__link:hover::after {
+  content: attr(data-label);
+  position: absolute;
+  inset-inline-start: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--bg-surface-3);
+  border: 1px solid var(--border-default);
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+  font-size: var(--text-xs);
+  z-index: var(--z-tooltip);
+  color: var(--text-primary);
+}
+
+/* ── Status Dot ── */
+html[data-ui-engine="shield"] .status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-inline-start: auto;
+  flex-shrink: 0;
+}
+
+html[data-ui-engine="shield"] .status-dot--on {
+  background: var(--color-success);
+  box-shadow: 0 0 6px var(--color-success);
+}
+
+html[data-ui-engine="shield"] .status-dot--off {
+  background: var(--text-disabled);
+}
+
+html[data-ui-engine="shield"] .status-dot--alert {
+  background: var(--color-warning);
+  animation: shield-pulse-fast 1s infinite;
+}
+
+/* ── User Zone (Footer) ── */
+html[data-ui-engine="shield"] .shield-sidebar__footer {
+  padding: var(--space-3);
+  border-top: 1px solid var(--border-subtle);
+  flex-shrink: 0;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-secondary);
+  transition: var(--transition-base);
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__user:hover {
+  background: var(--bg-surface-3);
+  color: var(--text-primary);
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-brand-900);
+  border: 1px solid var(--color-brand-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-bold);
+  color: var(--color-brand-primary);
+  flex-shrink: 0;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__user-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__username {
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar__status {
+  font-size: var(--text-2xs);
+  color: var(--color-success);
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-sidebar__user-info,
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-sidebar__username,
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed .shield-sidebar__status {
+  display: none;
+}

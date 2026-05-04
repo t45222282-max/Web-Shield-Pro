@@ -1,0 +1,67 @@
+/* _modals.css — Modals & Dialogs */
+
+html[data-ui-engine="shield"] .shield-modal-backdrop {
+  position: fixed; inset: 0;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(4px);
+  z-index: var(--z-modal-back);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-out);
+  pointer-events: none;
+}
+html[data-ui-engine="shield"] .shield-modal-backdrop.is-open { 
+  opacity: 1; 
+  pointer-events: auto;
+}
+
+html[data-ui-engine="shield"] .shield-modal {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%) scale(0.96);
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 64px);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  z-index: var(--z-modal);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-emphasis),
+              transform var(--duration-base) var(--ease-emphasis);
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+html[data-ui-engine="shield"] .shield-modal.is-open {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+}
+
+html[data-ui-engine="shield"] .shield-modal__header {
+  padding: var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+html[data-ui-engine="shield"] .shield-modal__title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  margin: 0;
+  color: var(--text-primary);
+}
+
+html[data-ui-engine="shield"] .shield-modal__body { 
+  padding: var(--space-4); 
+  overflow-y: auto; 
+  flex-grow: 1;
+}
+
+html[data-ui-engine="shield"] .shield-modal__footer {
+  display: flex; justify-content: flex-end; gap: var(--space-2);
+  padding: var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+}

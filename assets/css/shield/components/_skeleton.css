@@ -1,0 +1,37 @@
+/* _skeleton.css — Skeleton Loaders */
+
+html[data-ui-engine="shield"] .skeleton {
+  display: block;
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface-2) 0%,
+    var(--bg-surface-3) 50%,
+    var(--bg-surface-2) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-sm);
+  animation: shield-shimmer 1.5s infinite linear;
+}
+
+@keyframes shield-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+html[data-ui-engine="shield"] .skeleton--text { 
+  height: 12px; 
+  width: 80%; 
+  margin-bottom: var(--space-2);
+}
+
+html[data-ui-engine="shield"] .skeleton--title { 
+  height: 20px; 
+  width: 60%; 
+  margin-bottom: var(--space-3);
+}
+
+html[data-ui-engine="shield"] .skeleton--circle { 
+  border-radius: 50%; 
+  width: 32px; 
+  height: 32px; 
+}

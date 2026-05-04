@@ -1,0 +1,181 @@
+/**
+ * shield/layout/_topbar.css
+ * Topbar / Navigation Bar Layout
+ * Reference: docs/05-layout-and-navigation.md § 3
+ * Depends on: _tokens.css
+ */
+
+html[data-ui-engine="shield"] .shield-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 56px;
+  padding: 0 var(--space-4);
+  background: var(--bg-surface-1);
+  border-bottom: 1px solid var(--border-subtle);
+  position: sticky;
+  top: 0;
+  z-index: var(--z-fixed);
+  transition: background var(--duration-base) var(--ease-out),
+              backdrop-filter var(--duration-base) var(--ease-out);
+}
+
+/* Glass effect on scroll */
+html[data-ui-engine="shield"] .shield-topbar.is-scrolled {
+  background: rgba(17, 23, 38, 0.85);
+  backdrop-filter: saturate(180%) blur(16px);
+}
+
+html[data-ui-engine="shield"] .shield-topbar__start,
+html[data-ui-engine="shield"] .shield-topbar__end {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* ── Command Palette Trigger ── */
+html[data-ui-engine="shield"] .shield-cmdk-trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  height: 32px;
+  padding: 0 var(--space-3);
+  background: var(--bg-surface-2);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-tertiary);
+  font-size: var(--text-sm);
+  font-family: var(--font-sans);
+  cursor: pointer;
+  min-width: 200px;
+  transition: var(--transition-color);
+}
+
+html[data-ui-engine="shield"] .shield-cmdk-trigger:hover {
+  border-color: var(--border-default);
+  color: var(--text-secondary);
+}
+
+html[data-ui-engine="shield"] .shield-cmdk-trigger kbd {
+  margin-inline-start: auto;
+  padding: 1px 6px;
+  background: var(--bg-surface-3);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xs);
+  font-family: var(--font-mono);
+  font-size: var(--text-2xs);
+  color: var(--text-secondary);
+}
+
+/* ── Breadcrumb ── */
+html[data-ui-engine="shield"] .shield-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--text-tertiary);
+}
+
+html[data-ui-engine="shield"] .shield-breadcrumb a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+html[data-ui-engine="shield"] .shield-breadcrumb a:hover {
+  color: var(--text-primary);
+}
+
+html[data-ui-engine="shield"] .shield-breadcrumb [aria-current] {
+  color: var(--text-primary);
+}
+
+/* ── Page Header ── */
+html[data-ui-engine="shield"] .shield-page-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-6) 0;
+  margin-bottom: var(--space-6);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+html[data-ui-engine="shield"] .shield-page-header__actions {
+  display: flex;
+  gap: var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ── Content Grid ── */
+html[data-ui-engine="shield"] .shield-content-grid {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+html[data-ui-engine="shield"] .grid { display: grid; }
+html[data-ui-engine="shield"] .grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+html[data-ui-engine="shield"] .grid-cols-3 { grid-template-columns: repeat(3, 1fr); }
+html[data-ui-engine="shield"] .grid-cols-4 { grid-template-columns: repeat(4, 1fr); }
+html[data-ui-engine="shield"] .gap-4 { gap: var(--space-4); }
+html[data-ui-engine="shield"] .gap-6 { gap: var(--space-6); }
+html[data-ui-engine="shield"] .grid-col-span-2 { grid-column: span 2; }
+
+@media (max-width: 1199px) {
+  html[data-ui-engine="shield"] .grid-cols-4 { grid-template-columns: repeat(2, 1fr); }
+  html[data-ui-engine="shield"] .grid-cols-3 { grid-template-columns: 1fr; }
+  html[data-ui-engine="shield"] .grid-col-span-2 { grid-column: span 1; }
+}
+
+@media (max-width: 767px) {
+  html[data-ui-engine="shield"] .grid-cols-2,
+  html[data-ui-engine="shield"] .grid-cols-3,
+  html[data-ui-engine="shield"] .grid-cols-4 { grid-template-columns: 1fr; }
+}
+
+/* ── App Shell Layout (Content offset for sidebar) ── */
+html[data-ui-engine="shield"] .main-sidebar { display: none !important; }
+html[data-ui-engine="shield"] .main-header  { display: none !important; }
+
+html[data-ui-engine="shield"] .content-wrapper {
+  margin-inline-start: 256px !important;
+  padding: 0 !important;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-ui-engine="shield"] .content-wrapper > .content,
+html[data-ui-engine="shield"] .content-wrapper > .container-fluid {
+  padding: var(--space-6);
+  flex-grow: 1;
+}
+
+html[data-ui-engine="shield"] .shield-sidebar.is-collapsed ~ .content-wrapper,
+html[data-ui-engine="shield"] body.sidebar-collapsed .content-wrapper {
+  margin-inline-start: 64px !important;
+}
+
+/* ── Footer ── */
+html[data-ui-engine="shield"] .main-footer {
+  background: var(--bg-surface-1) !important;
+  border-top: 1px solid var(--border-subtle) !important;
+  color: var(--text-tertiary) !important;
+  font-size: var(--text-sm);
+  padding: var(--space-3) var(--space-6);
+}
+
+/* ── Responsive ── */
+@media (max-width: 991px) {
+  html[data-ui-engine="shield"] .shield-sidebar {
+    transform: translateX(100%); /* RTL: offscreen right */
+    transition: transform var(--duration-base) var(--ease-out);
+  }
+  html[data-ui-engine="shield"] .shield-sidebar.is-open {
+    transform: translateX(0);
+  }
+  html[data-ui-engine="shield"] .content-wrapper {
+    margin-inline-start: 0 !important;
+  }
+}

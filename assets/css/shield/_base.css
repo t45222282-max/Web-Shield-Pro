@@ -1,0 +1,50 @@
+/* _base.css — Base Reset and Styling */
+html[data-ui-engine="shield"] {
+  box-sizing: border-box;
+}
+
+html[data-ui-engine="shield"] *,
+html[data-ui-engine="shield"] *:before,
+html[data-ui-engine="shield"] *:after {
+  box-sizing: inherit;
+}
+
+html[data-ui-engine="shield"] body,
+html[data-ui-engine="shield"] .content-wrapper,
+html[data-ui-engine="shield"] .content,
+html[data-ui-engine="shield"] .container-fluid {
+  background: var(--bg-canvas) !important;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  transition: background-color var(--duration-base) var(--ease-out);
+}
+
+/* Base typography elements */
+html[data-ui-engine="shield"] h1, 
+html[data-ui-engine="shield"] h2, 
+html[data-ui-engine="shield"] h3, 
+html[data-ui-engine="shield"] h4, 
+html[data-ui-engine="shield"] h5, 
+html[data-ui-engine="shield"] h6 {
+  font-family: var(--font-display);
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+  color: var(--text-primary);
+}
+
+html[data-ui-engine="shield"] p {
+  margin-top: 0;
+  margin-bottom: var(--space-4);
+}
+
+html[data-ui-engine="shield"] a {
+  color: var(--color-brand-500);
+  text-decoration: none;
+  transition: var(--transition-color);
+}
+
+html[data-ui-engine="shield"] a:hover {
+  color: var(--color-brand-300);
+}

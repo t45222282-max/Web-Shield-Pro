@@ -1,0 +1,558 @@
+/* _legacy_overrides.css — Dark Mode overrides for AdminLTE + Shield components */
+
+/* ── Main Containers — transparent to show cyber background ── */
+html[data-theme="dark"][data-ui-engine="shield"] .content-wrapper,
+html[data-theme="dark"][data-ui-engine="shield"] .content,
+html[data-theme="dark"][data-ui-engine="shield"] .container-fluid {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .content-wrapper,
+html[data-theme="light"][data-ui-engine="shield"] .content,
+html[data-theme="light"][data-ui-engine="shield"] .container-fluid {
+  background: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── All Card Variants ── */
+html[data-theme="dark"][data-ui-engine="shield"] .card,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card {
+  background-color: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 0 15px rgba(0, 184, 230, 0.05) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .card-header,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__header,
+html[data-theme="dark"][data-ui-engine="shield"] .card-footer,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__footer {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .card-body,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__body {
+  background-color: transparent !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .card-title,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__title {
+  color: var(--text-primary) !important;
+}
+
+/* ── Status module cards (card card-body bg-light) ── */
+html[data-theme="dark"][data-ui-engine="shield"] .card.bg-light,
+html[data-theme="dark"][data-ui-engine="shield"] .card.shield-card__body,
+html[data-theme="dark"][data-ui-engine="shield"] .card-body.bg-light {
+  background-color: var(--bg-surface-2) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── KPI Cards — styles handled entirely by _kpi.css ── */
+
+/* ── Info Boxes ── */
+html[data-theme="dark"][data-ui-engine="shield"] .info-box,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-info-box {
+  background-color: var(--bg-surface-1) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .info-box-icon,
+html[data-theme="dark"][data-ui-engine="shield"] .info-box-icon.bg-dark {
+  background-color: var(--bg-surface-2) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .info-box-text,
+html[data-theme="dark"][data-ui-engine="shield"] .info-box-number {
+  color: var(--text-primary) !important;
+}
+
+/* ── Tables: ALL Variants ── */
+html[data-theme="dark"][data-ui-engine="shield"] .table,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable {
+  background-color: var(--bg-surface-1) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table thead th,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table thead th,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable thead th {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table tbody,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable tbody {
+  background-color: var(--bg-surface-1) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table tbody tr,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody tr,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable tbody tr {
+  background-color: var(--bg-surface-1) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table tbody tr:nth-child(even),
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody tr:nth-child(even),
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable tbody tr.even {
+  background-color: var(--bg-surface-2) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table th,
+html[data-theme="dark"][data-ui-engine="shield"] .table td,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table th,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table td,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable th,
+html[data-theme="dark"][data-ui-engine="shield"] table.dataTable td {
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+  background-color: transparent !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .table-hover tbody tr:hover td,
+html[data-theme="dark"][data-ui-engine="shield"] .table-hover tbody tr:hover th,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody tr:hover td {
+  background-color: var(--bg-surface-2) !important;
+}
+
+/* ── DataTables Pagination & Controls ── */
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_wrapper,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_length,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_filter,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_info,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_paginate {
+  color: var(--text-secondary) !important;
+  background-color: transparent !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_wrapper select,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_wrapper input {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_paginate .paginate_button {
+  background-color: var(--bg-surface-2) !important;
+  color: var(--text-secondary) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_paginate .paginate_button.current,
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_paginate .paginate_button:hover {
+  background: var(--color-brand-500) !important;
+  color: #fff !important;
+  border-color: var(--color-brand-500) !important;
+}
+
+/* ── Modals ── */
+html[data-theme="dark"][data-ui-engine="shield"] .modal-content {
+  background-color: var(--bg-surface-1) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .modal-header,
+html[data-theme="dark"][data-ui-engine="shield"] .modal-footer {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+/* ── Global Layout Refactoring (Header & Breadcrumbs) ── */
+html[data-ui-engine="shield"] .content-header {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+html[data-ui-engine="shield"] .content-header .row {
+  margin-bottom: 0 !important;
+}
+
+html[data-ui-engine="shield"] .content-header h1 {
+  display: none !important;
+}
+
+html[data-ui-engine="shield"] .breadcrumb {
+  background: linear-gradient(135deg, var(--color-brand-600) 0%, var(--color-brand-400) 100%) !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  width: fit-content !important;
+  padding: 8px 20px !important;
+  margin-bottom: var(--space-4) !important;
+  border-radius: var(--radius-lg) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 15px rgba(0, 184, 230, 0.2), var(--glow-brand) !important;
+  backdrop-filter: blur(8px) !important;
+}
+
+html[data-ui-engine="shield"] .breadcrumb-item,
+html[data-ui-engine="shield"] .breadcrumb-item + .breadcrumb-item::before {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: var(--weight-medium) !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2) !important;
+}
+
+html[data-ui-engine="shield"] .breadcrumb-item a {
+  color: #fff !important;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+html[data-ui-engine="shield"] .breadcrumb-item a:hover {
+  opacity: 1;
+  text-decoration: none !important;
+}
+
+html[data-ui-engine="shield"] .breadcrumb-item.active {
+  color: #fff !important;
+  opacity: 1;
+}
+
+/* ── Callouts ── */
+html[data-theme="dark"][data-ui-engine="shield"] .callout {
+  background-color: var(--bg-surface-2) !important;
+  border-left-color: var(--color-brand-500) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Forms ── */
+html[data-theme="dark"][data-ui-engine="shield"] .form-control,
+html[data-theme="dark"][data-ui-engine="shield"] select.form-control {
+  background-color: var(--bg-surface-2) !important;
+  border-color: var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+/* ── Charts ── */
+html[data-theme="dark"][data-ui-engine="shield"] canvas {
+  background-color: transparent !important;
+}
+
+/* ── Neon Borders & Glows (Dashboard Custom Match) ── */
+
+/* Dark Mode Glows (More Radiant) */
+html[data-theme="dark"][data-ui-engine="shield"] .neon-border-success {
+  border: 1px solid rgba(34, 197, 94, 0.8) !important;
+  box-shadow: 0 0 25px rgba(34, 197, 94, 0.4), inset 0 0 15px rgba(34, 197, 94, 0.2) !important;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-border-danger {
+  border: 1px solid rgba(239, 68, 68, 0.8) !important;
+  box-shadow: 0 0 25px rgba(239, 68, 68, 0.4), inset 0 0 15px rgba(239, 68, 68, 0.2) !important;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-border-info {
+  border: 1px solid rgba(0, 184, 230, 0.8) !important;
+  box-shadow: 0 0 25px rgba(0, 184, 230, 0.4), inset 0 0 15px rgba(0, 184, 230, 0.2) !important;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-border-purple {
+  border: 1px solid rgba(139, 92, 246, 0.8) !important;
+  box-shadow: 0 0 25px rgba(139, 92, 246, 0.4), inset 0 0 15px rgba(139, 92, 246, 0.2) !important;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-border-pink {
+  border: 1px solid rgba(217, 70, 239, 0.8) !important;
+  box-shadow: 0 0 25px rgba(217, 70, 239, 0.4), inset 0 0 15px rgba(217, 70, 239, 0.2) !important;
+  border-radius: var(--radius-lg);
+  background: rgba(17, 23, 38, 0.5) !important;
+  backdrop-filter: blur(12px) !important;
+}
+
+/* Light Mode adaptations (Clearer, less intense shadow) */
+html[data-theme="light"][data-ui-engine="shield"] .neon-border-success {
+  border: 2px solid #16a34a !important;
+  box-shadow: 0 2px 10px rgba(22, 163, 74, 0.15) !important;
+  border-radius: var(--radius-lg);
+  background: #ffffff !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-border-danger {
+  border: 2px solid #dc2626 !important;
+  box-shadow: 0 2px 10px rgba(220, 38, 38, 0.15) !important;
+  border-radius: var(--radius-lg);
+  background: #ffffff !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-border-info {
+  border: 2px solid #0284c7 !important;
+  box-shadow: 0 2px 10px rgba(2, 132, 199, 0.15) !important;
+  border-radius: var(--radius-lg);
+  background: #ffffff !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-border-purple {
+  border: 2px solid #7c3aed !important;
+  box-shadow: 0 2px 10px rgba(124, 58, 237, 0.15) !important;
+  border-radius: var(--radius-lg);
+  background: #ffffff !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-border-pink {
+  border: 2px solid #d946ef !important;
+  box-shadow: 0 2px 10px rgba(217, 70, 239, 0.15) !important;
+  border-radius: var(--radius-lg);
+  background: #ffffff !important;
+}
+
+/* Texts & Icons */
+html[data-theme="dark"][data-ui-engine="shield"] .neon-text-success {
+  text-shadow: 0 0 15px rgba(34, 197, 94, 0.9) !important;
+  color: #22FF77 !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-text-success {
+  color: #16a34a !important;
+  font-weight: bold;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-text-danger {
+  text-shadow: 0 0 15px rgba(239, 68, 68, 0.9) !important;
+  color: #FF5555 !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-text-danger {
+  color: #dc2626 !important;
+  font-weight: bold;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-text-info {
+  text-shadow: 0 0 15px rgba(0, 184, 230, 0.9) !important;
+  color: #00D4FF !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-text-info {
+  color: #0284c7 !important;
+  font-weight: bold;
+}
+
+/* Switches for Auto-Blocked */
+html[data-theme="dark"][data-ui-engine="shield"] .neon-switch-success {
+  background: transparent !important;
+  border: 1px solid rgba(34, 197, 94, 0.8) !important;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #22FF77 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4), inset 0 0 10px rgba(34, 197, 94, 0.2) !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-switch-success {
+  background: #f0fdf4 !important;
+  border: 1px solid #16a34a !important;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #16a34a !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-switch-danger {
+  background: transparent !important;
+  border: 1px solid rgba(239, 68, 68, 0.8) !important;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #FF5555 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4), inset 0 0 10px rgba(239, 68, 68, 0.2) !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-switch-danger {
+  background: #fef2f2 !important;
+  border: 1px solid #dc2626 !important;
+  border-radius: 20px;
+  padding: 4px 12px;
+  color: #dc2626 !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+}
+
+/* User Avatar */
+html[data-theme="dark"][data-ui-engine="shield"] .neon-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  box-shadow: 0 0 12px currentColor, inset 0 0 8px currentColor;
+  float: left;
+  margin-right: 15px;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+html[data-theme="light"][data-ui-engine="shield"] .neon-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  float: left;
+  margin-right: 15px;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+html[data-ui-engine="shield"] .neon-avatar i {
+  font-size: 1.4em;
+}
+
+/* ── System Info Page Custom Styles (Light/Dark mode support) ── */
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-stats-card {
+  background: rgba(17, 23, 38, 0.8) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+html[data-theme="light"][data-ui-engine="shield"] .shield-stats-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-stats-row {
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+html[data-theme="light"][data-ui-engine="shield"] .shield-stats-row {
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-stats-val {
+  background: rgba(0,0,0,0.2);
+  color: #A3ACBD;
+}
+html[data-theme="light"][data-ui-engine="shield"] .shield-stats-val {
+  background: #f3f4f6;
+  color: #4b5563;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-card {
+  background: rgba(17, 23, 38, 0.7);
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-host-card {
+  background: #ffffff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-title {
+  color: #A3ACBD;
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-host-title {
+  color: #6B7280;
+  font-weight: bold;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-val {
+  color: #ffffff;
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-host-val {
+  color: #111827;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-storage-circle {
+  background: rgba(17, 23, 38, 1);
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+}
+html[data-theme="light"][data-ui-engine="shield"] .shield-storage-circle {
+  background: #ffffff;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__title {
+  color: #fff;
+}
+html[data-theme="light"][data-ui-engine="shield"] .shield-card__title {
+  color: #111827;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-icon-info {
+  color: #00B8E6;
+  filter: drop-shadow(0 0 10px rgba(0, 184, 230, 0.8));
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-icon-info {
+  color: #0284c7;
+  filter: none;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-icon-purple {
+  color: #8B5CF6;
+  filter: drop-shadow(0 0 10px rgba(139, 92, 246, 0.8));
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-icon-purple {
+  color: #7c3aed;
+  filter: none;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .neon-icon-pink {
+  color: #D946EF;
+  filter: drop-shadow(0 0 10px rgba(217, 70, 239, 0.8));
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-icon-pink {
+  color: #d946ef;
+  filter: none;
+}
+
+/* ── Dashboard Microinteractions & Animations (DISABLED AS REQUESTED) ── */
+.neon-icon-animated {
+  display: inline-block;
+}
+
+.neon-host-card {
+  transition: all 0.4s ease !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Dark Mode Hover Glow Intensification (No movement, just glow) */
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-card.neon-border-info:hover {
+  box-shadow: 0 0 35px rgba(0, 184, 230, 0.5), inset 0 0 25px rgba(0, 184, 230, 0.3) !important;
+  border-color: rgba(0, 184, 230, 1) !important;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-card.neon-border-purple:hover {
+  box-shadow: 0 0 35px rgba(139, 92, 246, 0.5), inset 0 0 25px rgba(139, 92, 246, 0.3) !important;
+  border-color: rgba(139, 92, 246, 1) !important;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .neon-host-card.neon-border-pink:hover {
+  box-shadow: 0 0 35px rgba(217, 70, 239, 0.5), inset 0 0 25px rgba(217, 70, 239, 0.3) !important;
+  border-color: rgba(217, 70, 239, 1) !important;
+}
+
+/* Light Mode Hover Shadow Intensification */
+html[data-theme="light"][data-ui-engine="shield"] .neon-host-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1) !important;
+}

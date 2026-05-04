@@ -1,0 +1,88 @@
+/* _cards.css — Card Components */
+
+html[data-ui-engine="shield"] .shield-card {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: var(--transition-base);
+  margin-bottom: var(--space-4);
+  display: flex;
+  flex-direction: column;
+}
+
+html[data-ui-engine="shield"] .shield-card:hover {
+  border-color: var(--border-default);
+}
+
+/* Dark Mode Overrides */
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card {
+  background: var(--bg-surface-1) !important;
+  border-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__header {
+  border-bottom-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__footer {
+  background: var(--bg-surface-2) !important;
+  border-top-color: var(--border-subtle) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-card__header {
+  background: var(--bg-surface-1) !important;
+  border-bottom-color: var(--border-subtle) !important;
+}
+
+html[data-ui-engine="shield"] .shield-card__title {
+  font-family: var(--font-display);
+  font-size: var(--text-md);
+  font-weight: var(--weight-semibold);
+  color: var(--text-primary);
+  margin: 0;
+}
+
+html[data-ui-engine="shield"] .shield-card__subtitle {
+  font-family: var(--font-body);
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: var(--space-1);
+  font-weight: var(--weight-regular);
+}
+
+html[data-ui-engine="shield"] .shield-card__actions {
+  display: flex;
+  gap: var(--space-2);
+}
+
+html[data-ui-engine="shield"] .shield-card__body {
+  padding: var(--space-4);
+  flex-grow: 1;
+  background: inherit;
+}
+
+html[data-ui-engine="shield"] .shield-card__footer {
+  padding: var(--space-3) var(--space-4);
+  border-top: 1px solid var(--border-subtle);
+  background: var(--bg-surface-2);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-2);
+}
+
+/* Modifiers */
+html[data-ui-engine="shield"] .shield-card.is-highlighted {
+  border-color: var(--color-brand-500);
+  box-shadow: var(--glow-brand);
+}
+
+html[data-ui-engine="shield"] .shield-card.is-critical {
+  border-color: var(--color-critical);
+}
+
+html[data-ui-engine="shield"] .shield-card.is-compact .shield-card-header,
+html[data-ui-engine="shield"] .shield-card.is-compact .shield-card-body,
+html[data-ui-engine="shield"] .shield-card.is-compact .shield-card-footer {
+  padding: var(--space-2) var(--space-3);
+}

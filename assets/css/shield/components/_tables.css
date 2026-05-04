@@ -1,0 +1,208 @@
+/* _tables.css — Tables Component */
+
+html[data-ui-engine="shield"] .shield-table-wrapper {
+  background: var(--bg-surface-1);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--space-4);
+}
+
+html[data-ui-engine="shield"] .shield-table-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+html[data-ui-engine="shield"] .shield-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--text-sm);
+}
+
+html[data-ui-engine="shield"] .shield-table thead th {
+  position: sticky; top: 0;
+  background: var(--bg-surface-1);
+  padding: var(--space-3) var(--space-4);
+  text-align: start;
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  color: var(--text-tertiary);
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-wider);
+  border-bottom: 1px solid var(--border-default);
+  z-index: 1;
+}
+
+html[data-ui-engine="shield"] .shield-table tbody td {
+  padding: var(--space-2) var(--space-4);
+  height: 40px;
+  border-bottom: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+/* Dark Mode explicit background for table cells */
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody td {
+  background-color: var(--bg-surface-1) !important;
+  color: var(--text-primary) !important;
+}
+
+
+html[data-ui-engine="shield"] .shield-table tbody tr {
+  transition: background var(--duration-fast) var(--ease-out);
+}
+
+html[data-ui-engine="shield"] .shield-table tbody tr:hover {
+  background: var(--bg-surface-2);
+}
+
+html[data-ui-engine="shield"] .shield-table tbody tr.is-selected {
+  background: var(--color-brand-900);
+}
+
+html[data-ui-engine="shield"] .shield-table .col-num {
+  width: 50px;
+  font-family: var(--font-mono);
+  color: var(--text-tertiary);
+  text-align: center;
+}
+
+html[data-ui-engine="shield"] .shield-table .col-ip {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+  direction: ltr;
+}
+
+html[data-ui-engine="shield"] .shield-table .col-time {
+  font-family: var(--font-mono);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+html[data-ui-engine="shield"] .shield-table .col-actions {
+  width: 48px;
+  text-align: center;
+}
+
+/* DataTables compatibility */
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button {
+  border-radius: var(--radius-sm) !important;
+  border: 1px solid var(--border-subtle) !important;
+  background: transparent !important;
+  color: var(--text-secondary) !important;
+  padding: var(--space-1) var(--space-2) !important;
+  margin-inline-start: var(--space-1) !important;
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: var(--color-brand-500) !important;
+  color: var(--text-inverse) !important;
+  border-color: var(--color-brand-500) !important;
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button:hover {
+  background: var(--bg-surface-3) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border-default) !important;
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+  cursor: default !important;
+  color: var(--text-disabled) !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_info {
+  color: var(--text-secondary) !important;
+  font-size: var(--text-sm);
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_length,
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_filter {
+  color: var(--text-secondary) !important;
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-2);
+}
+
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_length select,
+html[data-ui-engine="shield"] .dataTables_wrapper .dataTables_filter input {
+  background-color: var(--bg-surface-2) !important;
+  border: 1px solid var(--border-default) !important;
+  color: var(--text-primary) !important;
+  border-radius: var(--radius-sm) !important;
+  padding: var(--space-1) var(--space-2) !important;
+}
+
+/* ── Mobile Card View ── */
+@media (max-width: 767px) {
+  html[data-ui-engine="shield"] .shield-table {
+    display: block;
+  }
+  html[data-ui-engine="shield"] .shield-table thead {
+    display: none; /* Hide headers on mobile */
+  }
+  html[data-ui-engine="shield"] .shield-table tbody {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    padding: var(--space-2);
+  }
+  html[data-ui-engine="shield"] .shield-table tbody tr {
+    display: block;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    padding: var(--space-3);
+    box-shadow: var(--shadow-sm);
+  }
+  html[data-ui-engine="shield"] .shield-table tbody tr:hover {
+    background: var(--bg-surface-3);
+    border-color: var(--color-brand-500);
+  }
+  html[data-ui-engine="shield"] .shield-table tbody td {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-2) 0;
+    height: auto;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  html[data-ui-engine="shield"] .shield-table tbody td:last-child {
+    border-bottom: none;
+  }
+  /* Show column label using data-label attribute (needs to be added to HTML) */
+  html[data-ui-engine="shield"] .shield-table tbody td::before {
+    content: attr(data-label);
+    font-weight: var(--weight-bold);
+    color: var(--text-tertiary);
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+  }
+}
+
+/* Dark Mode Specific Adjustments */
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table-wrapper,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table thead th {
+  background: var(--bg-surface-1) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .shield-table tbody tr:hover {
+  background: var(--bg-surface-2) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button {
+  background: var(--bg-surface-2) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] .dataTables_wrapper .dataTables_paginate .paginate_button.current {
+  background: var(--color-brand-500) !important;
+}
+

@@ -1,0 +1,63 @@
+/**
+ * shield/components/_module-card.css
+ * Dashboard Module Card Component
+ */
+
+html[data-ui-engine="shield"] .shield-module-card {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-4);
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    text-decoration: none;
+    transition: var(--transition-base);
+    cursor: pointer;
+}
+html[data-ui-engine="shield"] .shield-module-card:hover {
+    background: var(--bg-surface-3);
+    border-color: var(--border-default);
+}
+html[data-ui-engine="shield"] .shield-module-card--on {
+    border-inline-start: 3px solid var(--color-success);
+}
+html[data-ui-engine="shield"] .shield-module-card--off {
+    border-inline-start: 3px solid var(--color-critical);
+    opacity: 0.7;
+}
+html[data-ui-engine="shield"] .shield-module-card__icon {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--radius-md);
+    background: var(--bg-surface-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+html[data-ui-engine="shield"] .shield-module-card--on .shield-module-card__icon {
+    color: var(--color-success);
+}
+html[data-ui-engine="shield"] .shield-module-card--off .shield-module-card__icon {
+    color: var(--color-critical);
+}
+html[data-ui-engine="shield"] .shield-module-card__info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    overflow: hidden;
+}
+html[data-ui-engine="shield"] .shield-module-card__label {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-medium);
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+html[data-ui-engine="shield"] .shield-module-card__status {
+    font-size: var(--text-xs);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}

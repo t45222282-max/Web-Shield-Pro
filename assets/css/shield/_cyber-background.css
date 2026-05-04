@@ -1,0 +1,214 @@
+/* _cyber-background.css
+ * طبقة خلفية Cybersecurity لكامل لوحة التحكم
+ * المسار الصحيح: assets/css/shield/ → ../../img/
+ */
+
+/* ══════════════════════════════════════════════
+   إزالة خلفية AdminLTE الصلبة من body والـ wrapper
+   حتى تظهر طبقة الخلفية من خلفها
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] body {
+  background-color: transparent !important;
+}
+
+html[data-ui-engine="shield"] .wrapper {
+  background-color: transparent !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* خلفية canvas الداكنة على html نفسه (آخر ملجأ) */
+html[data-theme="dark"][data-ui-engine="shield"] {
+  background-color: #060D1A !important;
+}
+
+html[data-theme="light"][data-ui-engine="shield"] {
+  background-color: #EEF3F8 !important;
+}
+
+/* ══════════════════════════════════════════════
+   الطبقة الرئيسية — fixed، خلف كل شيء
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] #cyber-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ══════════════════════════════════════════════
+   طبقة 1 — صورة الخلفية
+   المسار: assets/css/shield/ → ../../img/
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] #cyber-bg .cyber-bg__image {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] #cyber-bg .cyber-bg__image {
+  background-image: url('../../img/dark_cyber_background.svg');
+}
+
+html[data-theme="light"][data-ui-engine="shield"] #cyber-bg .cyber-bg__image {
+  background-image: url('../../img/light_cyber_background.svg');
+}
+
+/* ══════════════════════════════════════════════
+   طبقة 2 — أرقام 0 و 1 المتساقطة (طبقتان متفاوتتان)
+   الخدعة البصرية: تأخير سالب يجعلها ظاهرة فوراً من البداية
+   طبقتان بسرعتين مختلفتين = نزول متفاوت دائم
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] #cyber-bg .cyber-binary-rain {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* ── الطبقة الأولى: سريعة، تبدأ من المنتصف مباشرة ── */
+html[data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::before {
+  content:
+    "01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 "
+    "10 01 00 11 01 11 00 11 10 01 00 11 01 10 00 11 10 01 00 11 01 10 00 11 10 01 00 11 01 10 00 11 10 01 00 11 01 10 00 11 "
+    "01 11 00 10 01 11 10 00 11 01 10 00 01 11 00 10 01 11 10 00 11 01 10 00 01 11 00 10 01 11 10 00 11 01 10 00 01 11 00 10 "
+    "11 00 01 10 11 00 10 01 00 11 01 10 11 00 01 10 11 00 10 01 00 11 01 10 11 00 01 10 11 00 10 01 00 11 01 10 11 00 01 10 "
+    "00 11 10 01 00 11 01 10 11 00 10 01 00 11 10 01 00 11 01 10 11 00 10 01 00 11 10 01 00 11 01 10 11 00 10 01 00 11 10 01 "
+    "10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 "
+    "01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 01 00 11 10 01 10 11 00 10 01 11 "
+    "11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 "
+    "00 10 11 01 10 00 11 01 10 11 00 01 10 00 11 01 10 00 11 01 10 11 00 01 10 00 11 01 10 00 11 01 10 11 00 01 10 00 11 01 "
+    "10 11 00 01 11 10 00 01 10 11 00 01 11 10 00 01 10 11 00 01 11 10 00 01 10 11 00 01 11 10 00 01 10 11 00 01 11 10 00 01 ";
+
+  position: absolute;
+  /* تبدأ من فوق مرئية مباشرة — الخدعة هي التأخير السالب */
+  top: -120%;
+  left: 0;
+  right: 0;
+  height: 220%;
+
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 15px;
+  line-height: 2.4;
+  letter-spacing: 9px;
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: break-word;
+
+  /* سرعة 14 ثانية، يبدأ وكأنه في المنتصف فعلاً (تأخير -7s) */
+  animation: cyberRain_A 14s linear infinite;
+  animation-delay: -7s;
+  will-change: transform;
+}
+
+/* ── الطبقة الثانية: أبطأ قليلاً، بداية مختلفة = تفاوت حقيقي ── */
+html[data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::after {
+  content:
+    "11 00 01 10 00 11 01 10 00 01 11 10 00 11 01 10 00 01 11 10 00 11 01 10 00 01 11 10 00 11 01 10 00 01 11 10 00 11 01 10 "
+    "01 10 11 00 01 10 00 11 10 01 11 00 01 10 00 11 10 01 11 00 01 10 00 11 10 01 11 00 01 10 00 11 10 01 11 00 01 10 00 11 "
+    "10 00 11 01 10 11 00 01 10 00 11 01 10 11 00 01 10 00 11 01 10 11 00 01 10 00 11 01 10 11 00 01 10 00 11 01 10 11 00 01 "
+    "00 01 10 11 00 01 11 10 01 00 10 11 00 01 11 10 01 00 10 11 00 01 11 10 01 00 10 11 00 01 11 10 01 00 10 11 00 01 11 10 "
+    "11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 "
+    "00 11 10 01 00 10 11 01 10 00 11 01 00 10 11 01 10 00 11 01 00 10 11 01 10 00 11 01 00 10 11 01 10 00 11 01 00 10 11 01 "
+    "10 01 00 11 10 01 11 00 01 10 11 00 01 10 11 00 01 10 00 11 10 01 11 00 01 10 11 00 01 10 11 00 01 10 00 11 10 01 11 00 "
+    "01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 01 11 10 00 01 11 00 10 "
+    "11 00 10 01 11 00 01 10 11 00 10 01 11 00 01 10 11 00 10 01 11 00 01 10 11 00 10 01 11 00 01 10 11 00 10 01 11 00 01 10 "
+    "00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 00 10 01 11 00 10 11 01 ";
+
+  position: absolute;
+  top: -120%;
+  left: 0;
+  right: 0;
+  height: 220%;
+
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 13px;
+  line-height: 2.8;
+  letter-spacing: 11px;
+  white-space: normal;
+  word-break: break-all;
+  overflow-wrap: break-word;
+
+  /* سرعة 20 ثانية، يبدأ من نقطة مختلفة (-4s) = تفاوت مع الطبقة الأولى */
+  animation: cyberRain_B 20s linear infinite;
+  animation-delay: -4s;
+  will-change: transform;
+  opacity: 0.75;
+}
+
+/* ── ألوان الطبقتين ── */
+html[data-theme="dark"][data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::before {
+  color: rgba(0, 220, 255, 0.28);
+}
+html[data-theme="dark"][data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::after {
+  color: rgba(0, 255, 180, 0.18);
+}
+
+html[data-theme="light"][data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::before {
+  color: rgba(0, 80, 180, 0.18);
+}
+html[data-theme="light"][data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::after {
+  color: rgba(0, 120, 80, 0.13);
+}
+
+/* ══════════════════════════════════════════════
+   طبقة 3 — Overlay لضبط الوضوح
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] #cyber-bg .cyber-bg__overlay {
+  position: absolute;
+  inset: 0;
+}
+
+html[data-theme="dark"][data-ui-engine="shield"] #cyber-bg .cyber-bg__overlay {
+  background: rgba(6, 13, 26, 0.35);
+}
+
+html[data-theme="light"][data-ui-engine="shield"] #cyber-bg .cyber-bg__overlay {
+  background: rgba(238, 243, 248, 0.45);
+}
+
+/* ══════════════════════════════════════════════
+   Animations — سرعتان مختلفتان للتفاوت البصري
+══════════════════════════════════════════════ */
+
+/* الطبقة الأولى: تبدأ من أعلى وتنزل للأسفل */
+@keyframes cyberRain_A {
+  from { transform: translateY(0%); }
+  to   { transform: translateY(100%); }
+}
+
+/* الطبقة الثانية: نفس الحركة لكن بتوقيت مختلف */
+@keyframes cyberRain_B {
+  from { transform: translateY(0%); }
+  to   { transform: translateY(100%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::before,
+  html[data-ui-engine="shield"] #cyber-bg .cyber-binary-rain::after {
+    animation: none;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   ضمان أن المحتوى فوق الخلفية
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .main-sidebar,
+html[data-ui-engine="shield"] .shield-sidebar {
+  position: relative;
+  z-index: 10;
+}
+
+html[data-ui-engine="shield"] .main-header,
+html[data-ui-engine="shield"] .shield-topbar {
+  position: relative;
+  z-index: 10;
+}
+
+html[data-ui-engine="shield"] .content-wrapper {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}

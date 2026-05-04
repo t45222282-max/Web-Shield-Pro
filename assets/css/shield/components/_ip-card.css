@@ -1,0 +1,79 @@
+/**
+ * shield/components/_ip-card.css
+ * IP Hover Card component styles
+ */
+
+html[data-ui-engine="shield"] .shield-ip-cell {
+    cursor: help;
+    color: var(--color-brand-primary);
+    font-family: var(--font-mono);
+    text-decoration: underline dotted var(--border-default);
+    text-underline-offset: 4px;
+}
+
+html[data-ui-engine="shield"] .shield-ip-card {
+    position: absolute;
+    width: 280px;
+    background: var(--bg-surface-2);
+    border: 1px solid var(--border-default);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    z-index: var(--z-popover);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity var(--duration-base) var(--ease-emphasis),
+                transform var(--duration-base) var(--ease-emphasis);
+    pointer-events: none;
+}
+
+html[data-ui-engine="shield"] .shield-ip-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__header {
+    padding: var(--space-3) var(--space-4);
+    border-bottom: 1px solid var(--border-subtle);
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: var(--text-sm);
+    font-weight: var(--weight-bold);
+    color: var(--text-primary);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__body {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__row {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--text-xs);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__row .label {
+    color: var(--text-tertiary);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__row .value {
+    color: var(--text-secondary);
+    font-weight: var(--weight-medium);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__footer {
+    padding: var(--space-3) var(--space-4);
+    background: var(--bg-surface-3);
+    border-top: 1px solid var(--border-subtle);
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+html[data-ui-engine="shield"] .shield-ip-card__footer .btn-shield-sm {
+    width: 100%;
+    justify-content: center;
+    font-size: var(--text-xs);
+}
