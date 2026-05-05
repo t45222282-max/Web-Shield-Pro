@@ -85,169 +85,220 @@ if (isset($_POST['save'])) {
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
-    <header class="shield-page-header">
-        <div class="shield-page-header__main">
-            <h1 class="txt-h1">وحدة الحماية: حقن SQL</h1>
-            <p class="txt-body-sm txt-secondary">إدارة إعدادات الحماية ضد محاولات حقن قواعد البيانات والتهديدات المرتبطة.</p>
-        </div>
-    </header>
 
-    <div class="shield-grid shield-grid--3" style="margin-bottom: var(--space-6);">
-        <!-- Main Column (2/3) -->
-        <div style="grid-column: span 2;">
-            <?php if ($settings['sqli_protection'] == 1): ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-success); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-check" class="icon icon-lg text-success"></i>
-                        <div>
-                            <h2 class="txt-h3 text-success">مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع محمي من <strong>هجمات حقن SQL (SQLi)</strong></p>
+
+    <div class="sql-page-wrapper">
+        <div class="shield-grid shield-grid--3">
+            <!-- Main Column (2/3) -->
+            <div style="grid-column: span 2;">
+                
+                <?php if ($settings['sqli_protection'] == 1): ?>
+                    <div class="neon-host-card neon-border-success" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                        <i data-lucide="shield-check" class="neon-icon-success neon-icon-animated micro-anim-fingerprint" style="width: 56px; height: 56px;"></i>
+                        <div style="text-align: right;">
+                            <h2 class="txt-h3 text-success" style="text-shadow: 0 0 10px rgba(0,255,150,0.3);">الحماية مفعلة</h2>
+                            <p class="txt-body-md txt-secondary">نظام الحماية من **هجمات SQL Injection** يعمل بنشاط.</p>
                         </div>
                     </div>
-                </div>
-            <?php else: ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-critical); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-alert" class="icon icon-lg text-critical"></i>
-                        <div>
-                            <h2 class="txt-h3 text-critical">غير مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع غير محمي من <strong>هجمات حقن SQL (SQLi)</strong></p>
+                <?php else: ?>
+                    <div class="neon-host-card neon-border-danger" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                        <i data-lucide="shield-alert" class="neon-icon-pink neon-icon-animated micro-anim-cpu" style="width: 56px; height: 56px; filter: hue-rotate(300deg);"></i>
+                        <div style="text-align: right;">
+                            <h2 class="txt-h3 text-critical" style="text-shadow: 0 0 10px rgba(255,0,85,0.3);">الحماية معطلة</h2>
+                            <p class="txt-body-md txt-secondary">الموقع حالياً **عرضة** لمحاولات اختراق قواعد البيانات.</p>
                         </div>
                     </div>
-                </div>
-            <?php endif; ?>
+                <?php endif; ?>
 
-            <form action="" method="post">
-                <div class="shield-card" style="margin-bottom: var(--space-6);">
-                    <div class="shield-card__header">
-                        <i data-lucide="shield-plus" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">خيارات الحماية الإضافية</span>
+                <form action="" method="post">
+                    <div class="neon-panel-cyan" style="padding: 25px; margin-bottom: var(--space-6);">
+                        <div class="shield-card__header" style="margin-bottom: 20px; border-bottom: 1px solid rgba(0,210,255,0.1); padding-bottom: 15px;">
+                            <i data-lucide="settings" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
+                            <span class="shield-card__title" style="font-size: 1.2em; margin-right: 10px;">خيارات الحماية الإضافية</span>
+                        </div>
+
+                    <div class="interactive-grid">
+                        <div class="interactive-card-wrapper glow-cyan">
+                            <input type="checkbox" id="chk-php" name="protection6" value="1" <?php echo ($settings['sqli_protection6'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-php">
+                                <div class="card-header">
+                                    <i class="fas fa-ghost ghost-icon"></i>
+                                    <h3 class="card-title">إخفاء معلومات PHP</h3>
+                                    <i class="fas fa-ghost ghost-icon"></i>
+                                </div>
+                                <p class="card-subtitle">إخفاء إصدار PHP</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="interactive-card-wrapper glow-purple">
+                            <input type="checkbox" id="chk-click" name="protection3" value="1" <?php echo ($settings['sqli_protection3'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-click">
+                                <div class="card-header">
+                                    <h3 class="card-title">حماية Clickjacking</h3>
+                                </div>
+                                <p class="card-subtitle">كشف ومنع محاولات النقر</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div class="interactive-card-wrapper glow-green">
+                            <input type="checkbox" id="chk-xss" name="protection2" value="1" <?php echo ($settings['sqli_protection2'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-xss">
+                                <div class="card-header">
+                                    <h3 class="card-title">حماية XSS</h3>
+                                </div>
+                                <p class="card-subtitle">تطهير الطفرات المدخلة</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
+                        </div>
                     </div>
-                    <div class="shield-card__body">
-                        <div class="shield-grid shield-grid--3" style="margin-bottom: var(--space-4);">
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">حماية XSS</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">تطهير الطلبات المصابة</p>
-                                <input type="checkbox" name="protection2" class="psec-switch" <?php echo ($settings['sqli_protection2'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">حماية Clickjacking</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">كشف ومنع محاولات النقر</p>
-                                <input type="checkbox" name="protection3" class="psec-switch" <?php echo ($settings['sqli_protection3'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">إخفاء معلومات PHP</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">إخفاء إصدار PHP</p>
-                                <input type="checkbox" name="protection6" class="psec-switch" <?php echo ($settings['sqli_protection6'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                        </div>
-                        <div class="shield-grid shield-grid--2" style="margin-bottom: var(--space-4);">
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">حماية هجمات MIME</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">منع الهجمات القائمة على عدم تطابق الأنماط</p>
-                                <input type="checkbox" name="protection4" class="psec-switch" <?php echo ($settings['sqli_protection4'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">اتصال آمن</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">فرض استخدام الاتصال الآمن (HTTPS)</p>
-                                <input type="checkbox" name="protection5" class="psec-switch" <?php echo ($settings['sqli_protection5'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
+
+                    <div class="interactive-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="interactive-card-wrapper glow-purple">
+                            <input type="checkbox" id="chk-https" name="protection5" value="1" <?php echo ($settings['sqli_protection5'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-https">
+                                <div class="card-header">
+                                    <h3 class="card-title">اتصال آمن</h3>
+                                </div>
+                                <p class="card-subtitle">فرض استخدام الاتصال الآمن (HTTPS)</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
                         </div>
 
-                        <div style="background: var(--color-info); color: var(--bg-base); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-4); display: flex; gap: var(--space-2); align-items: center;">
-                            <i data-lucide="info" class="icon icon-sm"></i>
-                            <p class="txt-body-sm">لا تقم بتمكين الخيارات أدناه إذا كان موقعك يستخدم CMS لتجنب الأخطاء البرمجية.</p>
+                        <div class="interactive-card-wrapper glow-cyan">
+                            <input type="checkbox" id="chk-mime" name="protection4" value="1" <?php echo ($settings['sqli_protection4'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-mime">
+                                <div class="card-header">
+                                    <h3 class="card-title">حماية هجمات MIME</h3>
+                                </div>
+                                <p class="card-subtitle">منع الهجمات القائمة على عدم تطابق الأنماط</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="info-alert">
+                        لا تقم بتمكين الخيارات أدناه إذا كان موقعك يستخدم CMS لتجنب الأعطال البرمجية.
+                    </div>
+
+                    <div class="interactive-grid" style="grid-template-columns: repeat(2, 1fr);">
+                        <div class="interactive-card-wrapper glow-cyan">
+                            <input type="checkbox" id="chk-filter" name="protection7" value="1" <?php echo ($settings['sqli_protection7'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-filter">
+                                <div class="card-header">
+                                    <h3 class="card-title">تصفية البيانات</h3>
+                                </div>
+                                <p class="card-subtitle">تنظيف بسيط للمتغيرات باستخدام فلاتر PHP.</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
                         </div>
 
-                        <div class="shield-grid shield-grid--2" style="margin-bottom: var(--space-4);">
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">تصفية البيانات</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">تنظيف بسيط للمتغيرات باستخدام فلاتر PHP.</p>
-                                <input type="checkbox" name="protection7" class="psec-switch" <?php echo ($settings['sqli_protection7'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">تنظيف الطلبات</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">تنظيف متقدم للمتغيرات باستخدام فلاتر مخصصة.</p>
-                                <input type="checkbox" name="protection8" class="psec-switch" <?php echo ($settings['sqli_protection8'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
+                        <div class="interactive-card-wrapper glow-green">
+                            <input type="checkbox" id="chk-sanitize" name="protection8" value="1" <?php echo ($settings['sqli_protection8'] == 1) ? 'checked' : ''; ?>>
+                            <label class="interactive-card" for="chk-sanitize">
+                                <div class="card-header">
+                                    <h3 class="card-title">تنظيف الطلبات</h3>
+                                </div>
+                                <p class="card-subtitle">تنظيف متقدم للمتغيرات باستخدام فلاتر مخصصة.</p>
+                                <div class="check-icon-wrapper">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
+                            </label>
                         </div>
+                    </div>
 
-                        <div style="text-align: center;">
-                            <button class="btn-shield-primary" name="save2" type="submit">
-                                <i data-lucide="save" class="icon icon-sm"></i> حفظ التغييرات الإضافية
+                        <div style="text-align: center; margin-top: 25px;">
+                            <button class="btn-shield-primary" name="save2" type="submit" style="box-shadow: 0 0 15px rgba(0,210,255,0.2); border: 1px solid rgba(0,210,255,0.4);">
+                                <i data-lucide="save" class="neon-icon-info" style="width: 18px; height: 18px;"></i> حفظ الإعدادات
                             </button>
                         </div>
                     </div>
-                </div>
-            </form>
-        </div>
-
-        <!-- Sidebar Column (1/3) -->
-        <div>
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header">
-                    <i data-lucide="info" class="icon icon-sm text-brand"></i>
-                    <span class="shield-card__title">ما هو حقن SQL؟</span>
-                </div>
-                <div class="shield-card__body">
-                    <p class="txt-body-sm txt-secondary" style="line-height: 1.6;"><strong>SQL Injection</strong> هي تقنية يمكن من خلالها للمستخدمين الخبيثين حقن أوامر SQL في استعلام SQL عبر مدخلات الصفحة على الويب. يمكن للأوامر المحقونة أن تغير الاستعلام وتعرض أمان التطبيق للخطر.</p>
-                </div>
+                </form>
             </div>
 
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header">
-                    <i data-lucide="settings-2" class="icon icon-sm text-brand"></i>
-                    <span class="shield-card__title">إعدادات الوحدة</span>
+            <!-- Sidebar Column (1/3) -->
+            <div>
+                <div class="sidebar-card">
+                    <div class="sidebar-card__title">
+                        <i data-lucide="help-circle" class="text-brand"></i>
+                        ما هو حقن SQL؟
+                    </div>
+                    <p style="color: #ccc; line-height: 1.6; font-size: 0.95rem; margin: 0;">
+                        <strong>SQL Injection</strong> هي تقنية يمكن من خلالها للمستخدمين الخبيثين حقن أوامر SQL في استعلام SQL عبر مدخلات الصفحة على الويب. يمكن للأوامر المحقونة أن تغير الاستعلام وتعرض أمان التطبيق للخطر.
+                    </p>
                 </div>
-                <div class="shield-card__body">
+
+                <div class="sidebar-card">
+                    <div class="sidebar-card__title">
+                        <i data-lucide="settings-2" class="text-brand"></i>
+                        إعدادات الوحدة
+                    </div>
                     <form action="" method="post">
                         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: var(--space-3);">
                                 <div>
-                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">الحماية</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">تفعيل وحدة الحماية الأساسية</p>
+                                    <p style="font-weight: bold; margin: 0; color: #fff;">الحماية</p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: #aaa;">تفعيل وحدة الحماية الأساسية</p>
                                 </div>
-                                <input type="checkbox" name="protection" class="psec-switch" <?php echo ($settings['sqli_protection'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="protection" value="1" <?php echo ($settings['sqli_protection'] == 1) ? 'checked' : ''; ?>>
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
                             
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: var(--space-3);">
                                 <div>
-                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">التسجيل (Logging)</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">تسجيل التهديدات في سجلات النظام</p>
+                                    <p style="font-weight: bold; margin: 0; color: #fff;">التسجيل (Log&Log)</p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: #aaa;">تسجيل الهجمات في سجلات النظام</p>
                                 </div>
-                                <input type="checkbox" name="logging" class="psec-switch" <?php echo ($settings['sqli_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="logging" value="1" <?php echo ($settings['sqli_logging'] == 1) ? 'checked' : ''; ?>>
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: var(--space-3);">
                                 <div>
-                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">الحظر التلقائي</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">حظر عنوان IP مباشرة عند الاكتشاف</p>
+                                    <p style="font-weight: bold; margin: 0; color: #fff;">الحظر التلقائي</p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: #aaa;">حظر عنوان IP مباشرة عند الاكتشاف</p>
                                 </div>
-                                <input type="checkbox" name="autoban" class="psec-switch" <?php echo ($settings['sqli_autoban'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="autoban" value="1" <?php echo ($settings['sqli_autoban'] == 1) ? 'checked' : ''; ?>>
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: var(--space-3);">
                                 <div>
-                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">إشعارات البريد</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">إرسال تنبيه بالبريد الإلكتروني</p>
+                                    <p style="font-weight: bold; margin: 0; color: #fff;">إشعارات البريد</p>
+                                    <p style="margin: 0; font-size: 0.85rem; color: #aaa;">إرسال البريد والبريد الإلكتروني</p>
                                 </div>
-                                <input type="checkbox" name="mail" class="psec-switch" <?php echo ($settings['sqli_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="mail" value="1" <?php echo ($settings['sqli_mail'] == 1) ? 'checked' : ''; ?>>
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div>
-                                <p class="txt-body-md" style="font-weight: 500; margin-bottom: var(--space-2);">رابط التوجيه (Redirect)</p>
-                                <input name="redirect" class="form-control" type="text" value="<?php echo htmlspecialchars($settings['sqli_redirect']); ?>" required style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
+                                <p style="font-weight: bold; margin-bottom: var(--space-2); color: #fff;">رابط التوجيه (Redirect)</p>
+                                <input name="redirect" class="redirect-input" type="text" value="<?php echo htmlspecialchars($settings['sqli_redirect']); ?>" required>
                             </div>
 
-                            <button class="btn-shield-primary" name="save" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">
-                                <i data-lucide="save" class="icon icon-sm"></i> حفظ إعدادات الوحدة
+                            <button class="btn-cyan-glow" name="save" type="submit">
+                                حفظ إعدادات الوحدة
                             </button>
                         </div>
                     </form>

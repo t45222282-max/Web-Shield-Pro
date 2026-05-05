@@ -30,6 +30,7 @@ if (isset($_POST['save'])) {
 <!--CONTAINER CONTENT-->
 <!--===================================================-->
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+
     <header class="shield-page-header">
         <div class="shield-page-header__main">
             <h1 class="txt-h1">تصفية الكلمات السيئة</h1>
@@ -56,15 +57,15 @@ $s_status_lbl = $s_cfc > 0 ? 'مفعّل — يتم تصفية الكلمات ا
                 </div>
             </div>
             <!-- Replace word setting -->
-            <div class="shield-card" style="margin-bottom:var(--space-4);">
+            <div class="neon-panel-cyan">
                 <div class="shield-card__header"><i data-lucide="replace" class="icon icon-sm text-brand"></i><span class="shield-card__title">كلمة الاستبدال</span></div>
                 <form action="" method="post">
                 <div class="shield-card__body">
                     <label class="txt-body-sm font-medium" style="display:block;margin-bottom:var(--space-2);">النص الذي يظهر بدلاً من الكلمة السيئة</label>
-                    <input type="text" name="badword-replace" value="<?= $settings['badword_replace'] ?>" style="width:100%;border:1px solid var(--border-default);background:var(--bg-surface-3);color:var(--text-primary);padding:var(--space-2);border-radius:var(--radius-sm);">
+                    <input type="text" name="badword-replace" value="<?= $settings['badword_replace'] ?>" class="glow-input">
                 </div>
-                <div class="shield-card__footer" style="padding:var(--space-3);border-top:1px solid var(--border-subtle);">
-                    <button type="submit" name="save" class="btn-shield-primary"><i data-lucide="save" class="icon icon-sm"></i> حفظ</button>
+                <div class="shield-card__footer" style="padding:var(--space-3);border-top:1px solid rgba(255, 255, 255, 0.1);">
+                    <button type="submit" name="save" class="btn-cyan-glow-sm"><i data-lucide="save" class="icon icon-sm"></i> حفظ التغييرات</button>
                 </div>
                 </form>
             </div>
@@ -75,12 +76,12 @@ $s_status_lbl = $s_cfc > 0 ? 'مفعّل — يتم تصفية الكلمات ا
                         <i data-lucide="list" class="icon icon-sm text-brand"></i>
                         <span class="shield-card__title">الكلمات السيئة</span>
                     </div>
-                    <button onclick="document.getElementById('shield-add-word-form').style.display=document.getElementById('shield-add-word-form').style.display==='none'?'block':'none'" class="btn-shield-secondary btn-shield-sm"><i data-lucide="plus" class="icon icon-xs"></i> إضافة</button>
+                    <button type="button" onclick="document.getElementById('shield-add-word-form').style.display=document.getElementById('shield-add-word-form').style.display==='none'?'block':'none'" class="btn-cyan-glow-sm"><i data-lucide="plus" class="icon icon-xs"></i> إضافة</button>
                 </div>
                 <div id="shield-add-word-form" style="display:none;padding:var(--space-4);border-bottom:1px solid var(--border-subtle);">
                     <form method="post" action="" style="display:flex;gap:var(--space-2);">
-                        <input type="text" name="word" required placeholder="أدخل الكلمة السيئة" style="flex:1;border:1px solid var(--border-default);background:var(--bg-surface-3);color:var(--text-primary);padding:var(--space-2);border-radius:var(--radius-sm);">
-                        <button type="submit" name="add-word" class="btn-shield-primary"><i data-lucide="plus" class="icon icon-sm"></i> إضافة</button>
+                        <input type="text" name="word" required placeholder="أدخل الكلمة السيئة" class="glow-input" style="flex:1;">
+                        <button type="submit" name="add-word" class="btn-cyan-glow-sm"><i data-lucide="plus" class="icon icon-sm"></i> إضافة</button>
                     </form>
                 </div>
                 <div class="shield-card__body p-0">

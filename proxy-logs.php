@@ -19,18 +19,21 @@ if (isset($_GET['delete-all'])) {
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
     <header class="shield-page-header">
         <div class="shield-page-header__main">
-            <h1 class="txt-h1">سجلات البروكسي</h1>
-            <p class="txt-body-sm txt-secondary">مراقبة محاولات التخفي واستخدام البروكسي (Proxy) أو الشبكات الافتراضية (VPN).</p>
+            <h1 class="txt-h1">سجلات الوكيل</h1>
+            <p class="txt-body-sm txt-secondary">مراقبة محاولات الوصول عبر وكلاء (Proxies).</p>
         </div>
         <div class="shield-page-header__actions">
-            <a href="?delete-all" class="btn-shield-critical">
-                <i data-lucide="trash-2" class="icon icon-sm"></i>
+            <a href="?delete-all" class="btn-shield-critical" style="box-shadow: 0 0 15px rgba(255,0,85,0.2); border: 1px solid rgba(255,0,85,0.4); transition: all 0.3s ease;">
+                <i data-lucide="trash-2" class="neon-icon-pink" style="width:20px;height:20px; filter: hue-rotate(300deg);"></i>
                 حذف الكل
             </a>
         </div>
     </header>
+
+    <div class="neon-panel-cyan">
+    <div class="shield-card__header" style="padding: 20px 20px 0;"><i data-lucide="history" class="neon-icon-info" style="width: 24px; height: 24px;"></i><span class="shield-card__title" style="font-size: 1.2em; margin-right: 10px;">تفاصيل السجلات</span></div>
     <div class="shield-table-wrapper">
-        <table id="dt-basicbans" class="shield-table" width="100%">
+        <table id="dt-basiclogs" class="shield-table" width="100%">
             <thead>
                 <tr>
                   <th>عنوان الـ IP</th>
@@ -49,12 +52,12 @@ if (isset($_GET['delete-all'])) {
                 <tr>
                   <td data-label="عنوان الـ IP">' . $row['ip'] . '</td>
                   <td data-label="التاريخ" data-sort="' . strtotime($row['date']) . ' + ' . $row['time'] . '">' . $row['date'] . ' at ' . $row['time'] . '</td>
-                  <td data-label="المتصفح"><img src="assets/img/icons/browser/' . $row['browser_code'] . '.png" /> ' . $row['browser'] . '</td>
-                  <td data-label="نظام التشغيل"><img src="assets/img/icons/os/' . $row['os_code'] . '.png" /> ' . $row['os'] . '</td>
-                  <td data-label="الدولة"><img src="assets/plugins/flags/blank.png" class="flag flag-' . strtolower($row['country_code']) . '" alt="' . $row['country'] . '" /> ' . $row['country'] . '</td>
+                  <td data-label="المتصفح"><img src="assets/img/icons/browser/' . $row['browser_code'] . '.png" style="vertical-align: middle; margin-left: 5px;" /> ' . $row['browser'] . '</td>
+                  <td data-label="نظام التشغيل"><img src="assets/img/icons/os/' . $row['os_code'] . '.png" style="vertical-align: middle; margin-left: 5px;" /> ' . $row['os'] . '</td>
+                  <td data-label="الدولة"><img src="assets/plugins/flags/blank.png" class="flag flag-' . strtolower($row['country_code']) . '" alt="' . $row['country'] . '" style="vertical-align: middle; margin-left: 5px;" /> ' . $row['country'] . '</td>
                   <td data-label="الإجراءات">
-                    <a href="log-details.php?id=' . $row['id'] . '" class="btn-shield-secondary btn-shield-sm" title="تفاصيل السجل"><i data-lucide="file-text" class="icon icon-sm"></i></a>
-                    <a href="?delete-id=' . $row['id'] . '" class="btn-shield-critical btn-shield-sm" title="حذف السجل"><i data-lucide="trash" class="icon icon-sm"></i></a>
+                    <a href="log-details.php?id=' . $row['id'] . '" class="btn-shield-secondary btn-shield-sm" style="box-shadow: 0 0 10px rgba(0,210,255,0.2); border: 1px solid rgba(0,210,255,0.3); transition: all 0.3s ease;" title="تفاصيل السجل"><i data-lucide="file-text" class="neon-icon-info" style="width:16px;height:16px;"></i></a>
+                    <a href="?delete-id=' . $row['id'] . '" class="btn-shield-critical btn-shield-sm" style="box-shadow: 0 0 10px rgba(255,0,85,0.2); border: 1px solid rgba(255,0,85,0.3); transition: all 0.3s ease;" title="حذف السجل"><i data-lucide="trash" class="neon-icon-pink" style="width:16px;height:16px; filter: hue-rotate(300deg);"></i></a>
                   </td>
                 </tr>
         ';
@@ -62,6 +65,7 @@ if (isset($_GET['delete-all'])) {
         ?>
             </tbody>
         </table>
+    </div>
     </div>
 <?php else: ?>
 <div class="content-header">

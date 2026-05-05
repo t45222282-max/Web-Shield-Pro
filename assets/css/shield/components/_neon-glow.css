@@ -1,0 +1,380 @@
+/* _neon-glow.css — Shared Neon & Glassmorphism Components */
+
+/* ══════════════════════════════════════════════
+   1. Sidebar Card
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .sidebar-card {
+    border-radius: var(--radius-md);
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
+    transition: var(--transition-base);
+}
+
+html[data-ui-engine="shield"] .sidebar-card__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding-bottom: var(--space-3);
+    margin-bottom: var(--space-4);
+}
+
+/* Dark Mode */
+html[data-theme="dark"][data-ui-engine="shield"] .sidebar-card {
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.15), inset 0 0 10px rgba(0, 210, 255, 0.05);
+    background: rgba(10, 15, 25, 0.8);
+}
+html[data-theme="dark"][data-ui-engine="shield"] .sidebar-card__title {
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Light Mode */
+html[data-theme="light"][data-ui-engine="shield"] .sidebar-card {
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.1);
+    background: rgba(255, 255, 255, 0.9);
+}
+html[data-theme="light"][data-ui-engine="shield"] .sidebar-card__title {
+    color: var(--text-primary);
+    border-bottom: 1px solid rgba(15, 23, 41, 0.1);
+}
+
+
+/* ══════════════════════════════════════════════
+   2. Interactive Cards (Options)
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .interactive-card {
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-bottom: var(--space-4);
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+html[data-ui-engine="shield"] .interactive-card:hover {
+    transform: translateY(-2px);
+}
+
+html[data-ui-engine="shield"] .interactive-card__icon {
+    width: 48px; height: 48px;
+    border-radius: var(--radius-md);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; flex-shrink: 0;
+}
+
+/* Dark Mode */
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card {
+    background: rgba(10, 15, 25, 0.8);
+    box-shadow: 0 0 20px var(--card-glow), inset 0 0 10px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--card-border);
+}
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card:hover {
+    box-shadow: 0 0 30px var(--card-glow), inset 0 0 15px rgba(0, 0, 0, 0.6);
+}
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card__icon {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card h3 {
+    color: #fff;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card p {
+    color: #ccc;
+}
+
+/* Light Mode */
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 0 15px var(--card-glow);
+    border: 1px solid var(--card-border);
+}
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card:hover {
+    box-shadow: 0 0 25px var(--card-glow);
+}
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card__icon {
+    background: rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+}
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card h3 {
+    color: var(--text-primary);
+}
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card p {
+    color: var(--text-secondary);
+}
+
+
+/* ══════════════════════════════════════════════
+   3. Custom Checkboxes
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .custom-checkbox-wrapper { display: inline-flex; align-items: center; cursor: pointer; }
+html[data-ui-engine="shield"] .custom-checkbox-wrapper input[type="checkbox"] { display: none; }
+
+html[data-ui-engine="shield"] .custom-checkbox-box {
+    width: 24px; height: 24px; border-radius: 4px;
+    display: flex; align-items: center; justify-content: center;
+    transition: all 0.3s; 
+}
+html[data-ui-engine="shield"] .custom-checkbox-wrapper input[type="checkbox"]:checked + .custom-checkbox-box {
+    background: #00d2ff; box-shadow: 0 0 15px #00d2ff;
+}
+html[data-ui-engine="shield"] .custom-checkbox-wrapper input[type="checkbox"]:checked + .custom-checkbox-box::after {
+    content: '\f00c'; font-family: 'Font Awesome 5 Free'; font-weight: 900;
+    color: #000; font-size: 14px;
+}
+
+/* Dark Mode */
+html[data-theme="dark"][data-ui-engine="shield"] .custom-checkbox-box {
+    background: #fff; box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+/* Light Mode */
+html[data-theme="light"][data-ui-engine="shield"] .custom-checkbox-box {
+    background: #f1f5f9; box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); border: 1px solid #cbd5e1;
+}
+
+
+/* ══════════════════════════════════════════════
+   4. Glow Inputs
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .glow-input {
+    width: 100%; border: 1px solid rgba(0, 210, 255, 0.4); 
+    padding: var(--space-2); border-radius: var(--radius-sm);
+    transition: all 0.3s;
+}
+html[data-ui-engine="shield"] .glow-input:focus {
+    border-color: #00d2ff; outline: none;
+}
+
+/* Dark Mode */
+html[data-theme="dark"][data-ui-engine="shield"] .glow-input {
+    background: rgba(0,0,0,0.5); color: #fff;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .glow-input:focus {
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+}
+
+/* Light Mode */
+html[data-theme="light"][data-ui-engine="shield"] .glow-input {
+    background: #fff; color: var(--text-primary); border: 1px solid #00d2ff;
+}
+html[data-theme="light"][data-ui-engine="shield"] .glow-input:focus {
+    box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+
+/* ══════════════════════════════════════════════
+   5. Glow Buttons
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .btn-cyan-glow-sm {
+    background: #00d2ff; color: #000; border: none; padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-sm); font-weight: bold; font-size: 0.9rem; cursor: pointer;
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-1);
+    transition: all 0.3s; 
+}
+html[data-ui-engine="shield"] .btn-cyan-glow-sm:hover { 
+    transform: translateY(-2px); 
+}
+
+/* Dark Mode */
+html[data-theme="dark"][data-ui-engine="shield"] .btn-cyan-glow-sm {
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+}
+html[data-theme="dark"][data-ui-engine="shield"] .btn-cyan-glow-sm:hover {
+    box-shadow: 0 0 25px rgba(0, 210, 255, 0.8); 
+}
+
+/* Light Mode */
+html[data-theme="light"][data-ui-engine="shield"] .btn-cyan-glow-sm {
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.3);
+}
+html[data-theme="light"][data-ui-engine="shield"] .btn-cyan-glow-sm:hover {
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); 
+}
+
+/* ══════════════════════════════════════════════
+   6. SQL Injection Page Specifics
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .sql-page-wrapper { padding-bottom: var(--space-8); }
+
+html[data-ui-engine="shield"] .status-card {
+    border: 2px solid var(--border-default);
+    border-radius: var(--radius-md);
+    padding: var(--space-4) var(--space-6);
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: var(--space-6);
+    transition: all 0.3s;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .status-card { background: rgba(0, 0, 0, 0.4); }
+html[data-theme="light"][data-ui-engine="shield"] .status-card { background: rgba(255, 255, 255, 0.6); }
+
+html[data-ui-engine="shield"] .status-enabled {
+    border-color: #00ff00;
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.2), inset 0 0 10px rgba(0, 255, 0, 0.1);
+}
+html[data-ui-engine="shield"] .status-disabled {
+    border-color: #ff0000;
+    box-shadow: 0 0 20px rgba(255, 0, 0, 0.2), inset 0 0 10px rgba(255, 0, 0, 0.1);
+}
+
+html[data-ui-engine="shield"] .status-title { font-size: 1.5rem; font-weight: bold; margin: 0 0 var(--space-2) 0; }
+html[data-ui-engine="shield"] .status-enabled .status-title { color: #00ff00; }
+html[data-ui-engine="shield"] .status-disabled .status-title { color: #ff0000; }
+
+html[data-theme="dark"][data-ui-engine="shield"] .status-desc { color: #ccc; }
+html[data-theme="light"][data-ui-engine="shield"] .status-desc { color: var(--text-secondary); }
+
+html[data-ui-engine="shield"] .status-icon { font-size: 2.5rem; }
+html[data-ui-engine="shield"] .status-enabled .status-icon { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+html[data-ui-engine="shield"] .status-disabled .status-icon { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+
+html[data-ui-engine="shield"] .redirect-input {
+    width: 100%; border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: var(--space-3); border-radius: var(--radius-sm);
+    transition: all 0.3s; text-align: left; direction: ltr;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .redirect-input { background: rgba(0, 0, 0, 0.6); color: #fff; }
+html[data-theme="light"][data-ui-engine="shield"] .redirect-input { background: #fff; color: var(--text-primary); border-color: #cbd5e1; }
+html[data-ui-engine="shield"] .redirect-input:focus {
+    border-color: #00d2ff; box-shadow: 0 0 15px rgba(0, 210, 255, 0.4); outline: none;
+}
+
+html[data-ui-engine="shield"] .btn-cyan-glow {
+    width: 100%; background: #00d2ff; color: #000; border: none;
+    padding: var(--space-3); border-radius: var(--radius-sm);
+    font-weight: bold; font-size: 1.1rem; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: var(--space-2);
+    transition: all 0.3s; box-shadow: 0 0 15px rgba(0, 210, 255, 0.5); margin-top: var(--space-2);
+}
+html[data-ui-engine="shield"] .btn-cyan-glow:hover { box-shadow: 0 0 25px rgba(0, 210, 255, 0.8); transform: translateY(-2px); }
+
+html[data-ui-engine="shield"] .interactive-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-bottom: var(--space-4);
+}
+@media (max-width: 992px) { html[data-ui-engine="shield"] .interactive-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (max-width: 768px) { html[data-ui-engine="shield"] .interactive-grid { grid-template-columns: 1fr !important; } }
+
+html[data-ui-engine="shield"] .interactive-card-wrapper { position: relative; --card-glow: #00d2ff; }
+html[data-ui-engine="shield"] .interactive-card-wrapper.glow-cyan { --card-glow: #00d2ff; }
+html[data-ui-engine="shield"] .interactive-card-wrapper.glow-purple { --card-glow: #b000ff; }
+html[data-ui-engine="shield"] .interactive-card-wrapper.glow-green { --card-glow: #00ff00; }
+html[data-ui-engine="shield"] .interactive-card-wrapper input[type="checkbox"] { display: none; }
+
+/* The generic .interactive-card is above, we need to override the flex layout for sql-injection cards which use column */
+html[data-ui-engine="shield"] .interactive-card-wrapper .interactive-card {
+    flex-direction: column; text-align: center; height: 100%; justify-content: flex-start;
+}
+html[data-ui-engine="shield"] .interactive-card-wrapper .card-header { display: flex; align-items: center; justify-content: center; gap: var(--space-2); margin-bottom: var(--space-2); }
+html[data-ui-engine="shield"] .interactive-card-wrapper .card-title { font-size: 1.1rem; font-weight: bold; margin: 0; }
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card-wrapper .card-title { color: #fff; }
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card-wrapper .card-title { color: var(--text-primary); }
+
+html[data-ui-engine="shield"] .interactive-card-wrapper .card-subtitle { font-size: 0.9rem; margin: 0; min-height: 40px; flex-grow: 1; }
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card-wrapper .card-subtitle { color: #aaa; }
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card-wrapper .card-subtitle { color: var(--text-secondary); }
+
+html[data-ui-engine="shield"] .interactive-card-wrapper .ghost-icon { color: #00d2ff; font-size: 1.8rem; text-shadow: 0 0 10px #00d2ff; }
+
+html[data-ui-engine="shield"] .interactive-card-wrapper .check-icon-wrapper {
+    margin-top: var(--space-4); height: 50px; display: flex; align-items: center; justify-content: center; position: relative;
+}
+html[data-ui-engine="shield"] .interactive-card-wrapper .check-icon-wrapper::before {
+    content: ''; width: 28px; height: 28px; border-radius: 4px; position: absolute; transition: all 0.3s; z-index: 1;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .interactive-card-wrapper .check-icon-wrapper::before { background: #fff; box-shadow: 0 0 8px rgba(255, 255, 255, 0.5); }
+html[data-theme="light"][data-ui-engine="shield"] .interactive-card-wrapper .check-icon-wrapper::before { background: #f1f5f9; box-shadow: 0 0 5px rgba(0,0,0,0.1); border: 1px solid #cbd5e1; }
+
+html[data-ui-engine="shield"] .interactive-card-wrapper input[type="checkbox"]:checked + .interactive-card .check-icon-wrapper::before {
+    background: #00d2ff; box-shadow: 0 0 15px #00d2ff;
+}
+html[data-ui-engine="shield"] .interactive-card-wrapper .check-icon {
+    font-size: 16px; color: transparent; text-shadow: none; z-index: 2; transition: all 0.3s;
+}
+html[data-ui-engine="shield"] .interactive-card-wrapper input[type="checkbox"]:checked + .interactive-card .check-icon { color: #000; }
+
+html[data-ui-engine="shield"] .info-alert {
+    background: #4a80ff; color: #fff; padding: var(--space-3) var(--space-4); border-radius: var(--radius-sm);
+    text-align: center; margin-bottom: var(--space-4); font-weight: bold; box-shadow: 0 0 15px rgba(74, 128, 255, 0.4);
+}
+html[data-ui-engine="shield"] .header-title-flex { display: flex; align-items: center; justify-content: flex-start; gap: var(--space-2); margin-bottom: var(--space-4); }
+html[data-ui-engine="shield"] .header-title-flex span { font-weight: bold; font-size: 1.2rem; }
+html[data-theme="dark"][data-ui-engine="shield"] .header-title-flex span { color: #fff; }
+html[data-theme="light"][data-ui-engine="shield"] .header-title-flex span { color: var(--text-primary); }
+
+/* ══════════════════════════════════════════════
+   7. Generic Neon Panel (Cyan)
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .neon-panel-cyan {
+    border-radius: var(--radius-md);
+    margin-bottom: var(--space-4);
+    transition: all 0.3s;
+}
+html[data-theme="dark"][data-ui-engine="shield"] .neon-panel-cyan {
+    border: 2px solid #00d2ff;
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.5), inset 0 0 10px rgba(0,0,0,0.5);
+    background: rgba(10, 15, 25, 0.8);
+}
+html[data-theme="light"][data-ui-engine="shield"] .neon-panel-cyan {
+    border: 2px solid rgba(0, 210, 255, 0.5);
+    box-shadow: 0 0 15px rgba(0, 210, 255, 0.2);
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* ══════════════════════════════════════════════
+   8. Cyber Page Header Component
+══════════════════════════════════════════════ */
+html[data-ui-engine="shield"] .cyber-page-header,
+html[data-ui-engine="shield"] .shield-page-header {
+    text-align: right;
+    direction: rtl;
+    margin-bottom: var(--space-6);
+    padding: var(--space-4) 0 var(--space-2) 0;
+}
+
+/* Main Title */
+html[data-ui-engine="shield"] .cyber-page-header__title,
+html[data-ui-engine="shield"] .shield-page-header__main .txt-h1 {
+    font-family: 'Cairo', 'Almarai', sans-serif;
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-weight: 800;
+    margin-bottom: var(--space-2);
+    transition: all 0.3s ease;
+}
+
+/* Subtitle */
+html[data-ui-engine="shield"] .cyber-page-header__subtitle,
+html[data-ui-engine="shield"] .shield-page-header__main .txt-secondary {
+    font-family: 'Cairo', 'Almarai', sans-serif;
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+/* Dark Mode Theme */
+html[data-theme="dark"][data-ui-engine="shield"] .cyber-page-header__title,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-page-header__main .txt-h1 {
+    color: #00d2ff;
+    text-shadow: 0 0 15px rgba(0, 210, 255, 0.6), 0 0 30px rgba(0, 210, 255, 0.2);
+}
+html[data-theme="dark"][data-ui-engine="shield"] .cyber-page-header__subtitle,
+html[data-theme="dark"][data-ui-engine="shield"] .shield-page-header__main .txt-secondary {
+    color: #cbd5e1; /* Light Gray */
+}
+
+/* Light Mode Theme */
+html[data-theme="light"][data-ui-engine="shield"] .cyber-page-header__title,
+html[data-theme="light"][data-ui-engine="shield"] .shield-page-header__main .txt-h1 {
+    color: #0f172a; /* Deep Navy */
+    text-shadow: 2px 2px 4px rgba(15, 23, 42, 0.1);
+}
+html[data-theme="light"][data-ui-engine="shield"] .cyber-page-header__subtitle,
+html[data-theme="light"][data-ui-engine="shield"] .shield-page-header__main .txt-secondary {
+    color: #475569; /* Dark Gray */
+}

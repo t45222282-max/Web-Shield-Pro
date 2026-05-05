@@ -56,24 +56,24 @@ if (isset($_GET['id'])) {
     <div class="content">
         <div class="container-fluid">
 
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                        <i data-lucide="file-text" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">سجل #<?php echo $row['id']; ?> - التفاصيل</span>
+            <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center; width: 100%; padding: 20px 20px 0;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i data-lucide="file-text" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em;">سجل #<?php echo $row['id']; ?> - التفاصيل</span>
                     </div>
-                    <div style="display: flex; gap: var(--space-2);">
+                    <div style="display: flex; gap: 10px;">
 <?php
     if (get_banned($row['ip']) == 1) {
-        echo '<a href="log-details.php?id=' . $row['id'] . '&unban-ip" class="btn-shield-success"><i data-lucide="unlock" class="icon icon-sm"></i> إلغاء الحظر (Unban IP)</a>';
+        echo '<a href="log-details.php?id=' . $row['id'] . '&unban-ip" class="btn-shield-success" style="box-shadow: 0 0 10px rgba(0,255,150,0.2);"><i data-lucide="unlock" class="icon icon-sm"></i> إلغاء الحظر</a>';
     } else {
-        echo '<a href="log-details.php?id=' . $row['id'] . '&ban-ip" class="btn-shield-warning"><i data-lucide="ban" class="icon icon-sm"></i> حظر الـ IP</a>';
+        echo '<a href="log-details.php?id=' . $row['id'] . '&ban-ip" class="btn-shield-warning" style="box-shadow: 0 0 10px rgba(255,180,0,0.2);"><i data-lucide="ban" class="icon icon-sm"></i> حظر الـ IP</a>';
     }
-    echo '<a href="all-logs.php?delete-id=' . $row['id'] . '" class="btn-shield-secondary" style="color: var(--color-critical); border-color: var(--color-critical);"><i data-lucide="trash" class="icon icon-sm"></i> حذف السجل</a>';
+    echo '<a href="all-logs.php?delete-id=' . $row['id'] . '" class="btn-shield-critical" style="box-shadow: 0 0 10px rgba(255,0,85,0.2);"><i data-lucide="trash" class="icon icon-sm"></i> حذف</a>';
 ?>
                     </div>
                 </div>
-                <div class="shield-card__body">
+                <div class="shield-card__body" style="padding: 20px;">
                     <div class="shield-grid shield-grid--2" style="gap: var(--space-4);">
                         <div>
                             <label class="txt-body-sm font-medium" style="display: block; margin-bottom: var(--space-2);">

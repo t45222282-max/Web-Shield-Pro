@@ -23,11 +23,9 @@ $site = clean_url($settings['site_url']);
 <!--حاوية المحتوى-->
 <!--===================================================-->
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
-    <header class="shield-page-header">
-        <div class="shield-page-header__main" style="text-align: right;">
-            <h1 class="txt-h1 neon-text-info" style="font-size: 2.8em; margin-bottom: 10px;">معلومات النظام</h1>
-            <p class="txt-body-sm txt-secondary" style="font-size: 1.2em;">نظرة عامة على حالة الخادم، استهلاك الموارد، وبيانات المضيف.</p>
-        </div>
+    <header class="cyber-page-header">
+        <h1 class="cyber-page-header__title">معلومات النظام</h1>
+        <p class="cyber-page-header__subtitle">نظرة عامة على حالة الخادم، استهلاك الموارد، وبيانات المضيف.</p>
     </header>
 
     <div class="content">

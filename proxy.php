@@ -74,6 +74,7 @@ if (isset($_POST['save'])) {
 <!--CONTENT CONTAINER-->
 <!--===================================================-->
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+
     <header class="shield-page-header">
         <div class="shield-page-header__main">
             <h1 class="txt-h1">وحدة الحماية: البروكسي و VPN</h1>
@@ -81,41 +82,37 @@ if (isset($_POST['save'])) {
         </div>
     </header>
 
-    <div class="shield-grid shield-grid--3" style="margin-bottom: var(--space-6);">
+    <div class="shield-grid shield-grid--3" style="margin-bottom: var(--space-6); gap: 25px;">
         <!-- Main Column (2/3) -->
         <div style="grid-column: span 2;">
             <?php if ($settings['proxy_protection'] > 0 OR $settings['proxy_protection2'] == 1): ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-success); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-check" class="icon icon-lg text-success"></i>
-                        <div>
-                            <h2 class="txt-h3 text-success">مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع محمي من <strong>البروكسيات</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-success" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-check" class="neon-icon-success neon-icon-animated micro-anim-fingerprint" style="width: 56px; height: 56px;"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-success" style="text-shadow: 0 0 10px rgba(0,255,150,0.3);">الحماية مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">نظام الكشف عن **البروكسيات و VPN** يعمل حالياً بكفاءة عالية.</p>
                     </div>
                 </div>
             <?php else: ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-critical); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-alert" class="icon icon-lg text-critical"></i>
-                        <div>
-                            <h2 class="txt-h3 text-critical">غير مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع غير محمي من <strong>البروكسيات</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-danger" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-alert" class="neon-icon-pink neon-icon-animated micro-anim-cpu" style="width: 56px; height: 56px; filter: hue-rotate(300deg);"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-critical" style="text-shadow: 0 0 10px rgba(255,0,85,0.3);">الحماية غير مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">الموقع حالياً معرض للزيارات من خلال **البروكسيات**.</p>
                     </div>
                 </div>
             <?php endif; ?>
 
             <form action="" method="post">
-                <div class="shield-card" style="margin-bottom: var(--space-6);">
-                    <div class="shield-card__header">
-                        <i data-lucide="shield-plus" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">طرق كشف البروكسي</span>
+                <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                    <div class="shield-card__header" style="padding: 20px 20px 0;">
+                        <i data-lucide="shield-plus" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em; margin-right: 10px;">طرق كشف البروكسي</span>
                     </div>
-                    <div class="shield-card__body">
+                    <div class="shield-card__body" style="padding: 20px;">
                         
                         <!-- Method 1 -->
-                        <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); margin-bottom: var(--space-4);">
+                        <div class="neon-panel-cyan" style="padding: var(--space-4);">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-3);">
                                 <h5 class="txt-h5">طريقة الكشف رقم #1 (API)</h5>
                                 <div class="dropdown">
@@ -199,24 +196,27 @@ if (isset($_POST['save'])) {
                             ?>
                             <div style="margin-top: var(--space-3);">
                                 <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">مفتاح API</label>
-                                <input name="apikey" type="text" style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);" <?php echo ($settings['proxy_protection'] > 0) ? 'value="' . $settings[$apik] . '"' : 'disabled'; ?>>
+                                <input name="apikey" type="text" class="glow-input" <?php echo ($settings['proxy_protection'] > 0) ? 'value="' . $settings[$apik] . '"' : 'disabled'; ?>>
                             </div>
                         </div>
 
                         <!-- Method 2 -->
-                        <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); margin-bottom: var(--space-4);">
-                            <div style="display: flex; justify-content: space-between; align-items: center;">
-                                <div>
+                        <label class="interactive-card-wrapper glow-purple" style="display: block; margin-bottom: var(--space-4);">
+                            <input type="checkbox" name="protection2" <?php echo ($settings['proxy_protection2'] == 1) ? 'checked="checked"' : ''; ?> />
+                            <div class="interactive-card" style="flex-direction: row; justify-content: space-between; align-items: center;">
+                                <div style="text-align: right;">
                                     <h5 class="txt-h5" style="margin-bottom: var(--space-2);">طريقة الكشف رقم #2 (HTTP Headers)</h5>
-                                    <p class="txt-body-sm txt-secondary">يقوم بفحص رؤوس اتصال HTTP للزائر لاكتشاف وجود بروكسي</p>
+                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">يقوم بفحص رؤوس اتصال HTTP للزائر لاكتشاف وجود بروكسي</p>
                                 </div>
-                                <input type="checkbox" name="protection2" class="psec-switch" <?php echo ($settings['proxy_protection2'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <div class="check-icon-wrapper" style="margin-top: 0; height: 32px;">
+                                    <i class="fas fa-check check-icon"></i>
+                                </div>
                             </div>
-                        </div>
+                        </label>
 
-                        <div style="text-align: center;">
-                            <button class="btn-shield-primary" name="save2" type="submit">
-                                <i data-lucide="save" class="icon icon-sm"></i> حفظ الإعدادات
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button class="btn-shield-primary" name="save2" type="submit" style="box-shadow: 0 0 15px rgba(0,210,255,0.2); border: 1px solid rgba(0,210,255,0.4);">
+                                <i data-lucide="save" class="neon-icon-info" style="width: 18px; height: 18px;"></i> حفظ الإعدادات
                             </button>
                         </div>
                     </div>
@@ -226,42 +226,48 @@ if (isset($_POST['save'])) {
 
         <!-- Sidebar Column (1/3) -->
         <div>
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header">
-                    <i data-lucide="info" class="icon icon-sm text-brand"></i>
-                    <span class="shield-card__title">ما هو البروكسي؟</span>
+            <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                <div class="shield-card__header" style="padding: 15px 15px 0;">
+                    <i data-lucide="info" class="neon-icon-info" style="width: 20px; height: 20px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.1em; margin-right: 8px;">ما هو البروكسي؟</span>
                 </div>
-                <div class="shield-card__body">
-                    <p class="txt-body-sm txt-secondary" style="line-height: 1.6;"><strong>بروكسي</strong> أو <strong>خادم بروكسي</strong> هو جهاز كمبيوتر آخر يعمل كوسيط تُعالج من خلاله طلبات الإنترنت. عند الاتصال به، يرسل جهازك الطلب إلى خادم البروكسي، الذي بدوره يُعالج الطلب ويعيد إليك ما طلبته.</p>
+                <div class="shield-card__body" style="padding: 15px;">
+                    <p class="txt-body-sm txt-secondary" style="line-height: 1.6;"><strong>بروكسي</strong> هو وسيط يُعالج طلبات الإنترنت. استخدام الوكلاء غالباً ما يكون لإخفاء الهوية الحقيقية للزائر أو تجاوز الحظر، مما قد يشكل خطراً أمنياً.</p>
                 </div>
             </div>
 
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header">
-                    <i data-lucide="settings-2" class="icon icon-sm text-brand"></i>
-                    <span class="shield-card__title">إعدادات الوحدة</span>
+            <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                <div class="shield-card__header" style="padding: 15px 15px 0;">
+                    <i data-lucide="settings-2" class="neon-icon-info" style="width: 20px; height: 20px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.1em; margin-right: 8px;">إعدادات الوحدة</span>
                 </div>
-                <div class="shield-card__body">
+                <div class="shield-card__body" style="padding: 15px;">
                     <form action="" method="post">
                         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(0,210,255,0.1); padding-bottom: var(--space-3);">
                                 <div>
-                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">تسجيل الأحداث (Logging)</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">تسجيل التهديدات في سجلات النظام</p>
+                                    <p class="txt-body-md" style="font-weight: 500; margin: 0;">تسجيل الأحداث</p>
+                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">حفظ التهديدات في السجلات</p>
                                 </div>
-                                <input type="checkbox" name="logging" class="psec-switch" <?php echo ($settings['proxy_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="logging" <?php echo ($settings['proxy_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div style="display: flex; justify-content: space-between; align-items: center;">
                                 <div>
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">إشعارات البريد</p>
-                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">تلقي تنبيه عند اكتشاف تهديد</p>
+                                    <p class="txt-body-sm txt-secondary" style="margin: 0;">تنبيه فوري عبر البريد</p>
                                 </div>
-                                <input type="checkbox" name="mail" class="psec-switch" <?php echo ($settings['proxy_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="mail" <?php echo ($settings['proxy_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
-                            <button class="btn-shield-primary" name="save" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">
-                                <i data-lucide="save" class="icon icon-sm"></i> حفظ إعدادات الوحدة
+                            <button class="btn-shield-primary" name="save" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2); box-shadow: 0 0 10px rgba(0,210,255,0.15);">
+                                <i data-lucide="save" class="neon-icon-info" style="width: 16px; height: 16px;"></i> حفظ الإعدادات
                             </button>
                         </div>
                     </form>

@@ -33,21 +33,11 @@ foreach ($files as $file) {
 
 			<!--CONTENT CONTAINER-->
 			<!--===================================================-->
-			<div class="content-header">
-
-				<div class="container-fluid">
-				  <div class="row mb-2">
-        		    <div class="col-sm-6">
-        		      <h1 class="m-0 "><i class="fas fa-home"></i> لوحة التحكم</h1>
-        		    </div>
-        		    <div class="col-sm-6">
-        		      <ol class="breadcrumb float-sm-right">
-        		        <li class="breadcrumb-item"><a href="dashboard.php"><i class="fas fa-home"></i> لوحة الإدارة</a></li>
-        		        <li class="breadcrumb-item active">لوحة التحكم</li>
-        		      </ol>
-        		    </div>
-        		  </div>
-    			</div>
+			<div class="shield-page-header">
+				<div class="shield-page-header__main">
+					<h1 class="txt-h1"><i class="fas fa-home"></i> لوحة التحكم</h1>
+					<p class="txt-body-sm txt-secondary">مرحباً بك في لوحة الإدارة المركزية لحماية الموقع.</p>
+				</div>
             </div>
 
 				<!--Page content-->
@@ -68,13 +58,13 @@ $count3 = mysqli_num_rows($query3);
 $query4 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Spammer'");
 $count4 = mysqli_num_rows($query4);
 ?>
-                <div class="row">
+                 <div class="row">
 
 			    <div class="col-sm-6 col-lg-3">
-                            <div class="shield-kpi-card shield-kpi--info">
+                            <div class="shield-kpi-card shield-kpi--info" style="box-shadow: 0 0 15px rgba(0,210,255,0.1); border: 1px solid rgba(0,210,255,0.2);">
                                <div class="shield-kpi__content">
                                    <div class="shield-kpi__icon">
-                                       <i class="fas fa-code"></i>
+                                       <i data-lucide="code" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
                                    </div>
                                    <div class="shield-kpi__text">
                                        <div class="shield-kpi__value"><?php echo $count; ?></div>
@@ -85,10 +75,10 @@ $count4 = mysqli_num_rows($query4);
                             </div>
 			    </div>
 			    <div class="col-sm-6 col-lg-3">
-			        <div class="shield-kpi-card shield-kpi--critical">
+			        <div class="shield-kpi-card shield-kpi--critical" style="box-shadow: 0 0 15px rgba(255,0,85,0.1); border: 1px solid rgba(255,0,85,0.2);">
                                <div class="shield-kpi__content">
                                    <div class="shield-kpi__icon">
-                                       <i class="fas fa-robot"></i>
+                                       <i data-lucide="bot" class="neon-icon-pink" style="width: 24px; height: 24px; filter: hue-rotate(300deg);"></i>
                                    </div>
                                    <div class="shield-kpi__text">
                                        <div class="shield-kpi__value"><?php echo $count2; ?></div>
@@ -99,10 +89,10 @@ $count4 = mysqli_num_rows($query4);
                             </div>
 			    </div>
 			    <div class="col-sm-6 col-lg-3">
-			        <div class="shield-kpi-card shield-kpi--success">
+			        <div class="shield-kpi-card shield-kpi--success" style="box-shadow: 0 0 15px rgba(0,255,150,0.1); border: 1px solid rgba(0,255,150,0.2);">
                                <div class="shield-kpi__content">
                                    <div class="shield-kpi__icon">
-                                       <i class="fas fa-globe"></i>
+                                       <i data-lucide="globe" class="neon-icon-success" style="width: 24px; height: 24px;"></i>
                                    </div>
                                    <div class="shield-kpi__text">
                                        <div class="shield-kpi__value"><?php echo $count3; ?></div>
@@ -113,10 +103,10 @@ $count4 = mysqli_num_rows($query4);
                             </div>
 			    </div>
 			    <div class="col-sm-6 col-lg-3">
-			        <div class="shield-kpi-card shield-kpi--warning">
+			        <div class="shield-kpi-card shield-kpi--warning" style="box-shadow: 0 0 15px rgba(255,180,0,0.1); border: 1px solid rgba(255,180,0,0.2);">
                                <div class="shield-kpi__content">
                                    <div class="shield-kpi__icon">
-                                       <i class="fas fa-keyboard"></i>
+                                       <i data-lucide="mail-warning" class="neon-icon-warning" style="width: 24px; height: 24px;"></i>
                                    </div>
                                    <div class="shield-kpi__text">
                                        <div class="shield-kpi__value"><?php echo $count4; ?></div>
@@ -132,12 +122,12 @@ $count4 = mysqli_num_rows($query4);
 
                 <div class="row d-flex align-items-stretch">
 					    <div class="col-lg-7 d-flex flex-column mb-4 mb-lg-0">
-					        <div id="panel-network" class="shield-card flex-fill w-100 mb-0">
-					            <div class="shield-card__header">
-					                <h3 class="shield-card__title"><i class="fas fa-chart-bar"></i> إحصائيات التهديد</h3>
+					        <div id="panel-network" class="neon-panel-cyan flex-fill w-100 mb-0">
+					            <div class="shield-card__header" style="padding: 20px 20px 0;">
+					                <h3 class="shield-card__title"><i data-lucide="bar-chart-3" class="neon-icon-info" style="width: 20px; height: 20px; margin-right: 8px;"></i> إحصائيات التهديد</h3>
 					            </div>
-					            <div class="shield-card__body">
-                                    <canvas id="log-stats" class="flex-fill"></canvas>
+					            <div class="shield-card__body" style="padding: 20px;">
+                                    <canvas id="log-stats" class="flex-fill" style="min-height: 300px;"></canvas>
                                 </div>
                             </div>
 

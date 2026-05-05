@@ -53,6 +53,7 @@ if (isset($_POST['save'])) {
 <!--حاوية المحتوى-->
 <!--===================================================-->
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+
     <header class="shield-page-header">
         <div class="shield-page-header__main">
             <h1 class="txt-h1">وحدة الحماية: البوتات الضارة</h1>
@@ -64,57 +65,76 @@ if (isset($_POST['save'])) {
         <!-- Main Column (2/3) -->
         <div style="grid-column: span 2;">
             <?php if ($settings['badbot_protection'] == 1 OR $settings['badbot_protection2'] == 1 OR $settings['badbot_protection3'] == 1): ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-success); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-check" class="icon icon-lg text-success"></i>
-                        <div>
-                            <h2 class="txt-h3 text-success">مفعل</h2>
-                            <p class="txt-body-md txt-secondary">تم حماية الموقع من <strong>البوتات الضارة</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-success" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-check" class="neon-icon-success neon-icon-animated micro-anim-fingerprint" style="width: 56px; height: 56px;"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-success" style="text-shadow: 0 0 10px rgba(0,255,150,0.3);">الحماية مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">الموقع محمي بنجاح من **البوتات الضارة والزوار الوهميين**.</p>
                     </div>
                 </div>
             <?php else: ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-critical); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-alert" class="icon icon-lg text-critical"></i>
-                        <div>
-                            <h2 class="txt-h3 text-critical">غير مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع غير محمي من <strong>البوتات الضارة</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-danger" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-alert" class="neon-icon-pink neon-icon-animated micro-anim-cpu" style="width: 56px; height: 56px; filter: hue-rotate(300deg);"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-critical" style="text-shadow: 0 0 10px rgba(255,0,85,0.3);">الحماية غير مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">الموقع حالياً **عرضة** لهجمات البوتات والزحف غير المرغوب فيه.</p>
                     </div>
                 </div>
             <?php endif; ?>
 
             <form action="" method="post">
-                <div class="shield-card" style="margin-bottom: var(--space-6);">
-                    <div class="shield-card__header">
-                        <i data-lucide="shield-plus" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">خيارات الحماية التلقائية</span>
+                <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                    <div class="shield-card__header" style="padding: 20px 20px 0;">
+                        <i data-lucide="shield-plus" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em; margin-right: 10px;">خيارات الحماية التلقائية</span>
                     </div>
-                    <div class="shield-card__body">
-                        <div class="shield-grid shield-grid--3" style="margin-bottom: var(--space-4);">
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">البوتات الضارة</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">يكتشف <b>البوتات الضارة</b> ويمنع وصولها إلى الموقع</p>
-                                <input type="checkbox" name="protection" class="psec-switch" <?php echo ($settings['badbot_protection'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">البوتات الوهمية</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">يكتشف <b>البوتات الوهمية</b> ويمنع وصولها إلى الموقع</p>
-                                <input type="checkbox" name="protection2" class="psec-switch" <?php echo ($settings['badbot_protection2'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
-                            <div class="shield-card" style="background: var(--bg-surface-2); padding: var(--space-4); text-align: center;">
-                                <h5 class="txt-h5">البوتات المجهولة</h5>
-                                <hr style="border-color: var(--border-subtle); margin: var(--space-2) 0;"/>
-                                <p class="txt-body-sm txt-secondary" style="min-height: 40px;">يكتشف <b>البوتات المجهولة</b> ويمنع وصولها إلى الموقع</p>
-                                <input type="checkbox" name="protection3" class="psec-switch" <?php echo ($settings['badbot_protection3'] == 1) ? 'checked="checked"' : ''; ?> />
-                            </div>
+                    <div class="shield-card__body" style="padding: 20px;">
+                        <div class="interactive-grid" style="margin-bottom: var(--space-4);">
+                            <label class="interactive-card-wrapper glow-cyan">
+                                <input type="checkbox" name="protection" <?php echo ($settings['badbot_protection'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <div class="interactive-card">
+                                    <div class="card-header">
+                                        <i class="fas fa-robot ghost-icon" style="--card-glow: #00d2ff;"></i>
+                                    </div>
+                                    <h3 class="card-title">البوتات الضارة</h3>
+                                    <p class="card-subtitle">يكتشف البوتات الضارة ويمنع وصولها إلى الموقع</p>
+                                    <div class="check-icon-wrapper">
+                                        <i class="fas fa-check check-icon"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="interactive-card-wrapper glow-purple">
+                                <input type="checkbox" name="protection2" <?php echo ($settings['badbot_protection2'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <div class="interactive-card">
+                                    <div class="card-header">
+                                        <i class="fas fa-user-secret ghost-icon" style="--card-glow: #b000ff;"></i>
+                                    </div>
+                                    <h3 class="card-title">البوتات الوهمية</h3>
+                                    <p class="card-subtitle">يكتشف البوتات الوهمية ويمنع وصولها إلى الموقع</p>
+                                    <div class="check-icon-wrapper">
+                                        <i class="fas fa-check check-icon"></i>
+                                    </div>
+                                </div>
+                            </label>
+
+                            <label class="interactive-card-wrapper glow-green">
+                                <input type="checkbox" name="protection3" <?php echo ($settings['badbot_protection3'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <div class="interactive-card">
+                                    <div class="card-header">
+                                        <i class="fas fa-mask ghost-icon" style="--card-glow: #00ff00;"></i>
+                                    </div>
+                                    <h3 class="card-title">البوتات المجهولة</h3>
+                                    <p class="card-subtitle">يكتشف البوتات المجهولة ويمنع وصولها إلى الموقع</p>
+                                    <div class="check-icon-wrapper">
+                                        <i class="fas fa-check check-icon"></i>
+                                    </div>
+                                </div>
+                            </label>
                         </div>
-                        <div style="text-align: center;">
-                            <button class="btn-shield-primary" name="save2" type="submit">
-                                <i data-lucide="save" class="icon icon-sm"></i> حفظ خيارات الحماية
+                        <div style="text-align: center; margin-top: 20px;">
+                            <button class="btn-shield-primary" name="save2" type="submit" style="box-shadow: 0 0 15px rgba(0,210,255,0.2); border: 1px solid rgba(0,210,255,0.4);">
+                                <i data-lucide="save" class="neon-icon-info" style="width: 18px; height: 18px;"></i> حفظ خيارات الحماية
                             </button>
                         </div>
                     </div>
@@ -147,7 +167,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">السجل (Logging)</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">تسجيل التهديدات في سجلات النظام</p>
                                 </div>
-                                <input type="checkbox" name="logging" class="psec-switch" <?php echo ($settings['badbot_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="logging" <?php echo ($settings['badbot_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
@@ -155,7 +178,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">الحظر التلقائي</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">حظر التهديدات تلقائيًا فور اكتشافها</p>
                                 </div>
-                                <input type="checkbox" name="autoban" class="psec-switch" <?php echo ($settings['badbot_autoban'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="autoban" <?php echo ($settings['badbot_autoban'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -163,7 +189,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">إشعارات البريد</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">إرسال تنبيه عند اكتشاف التهديد</p>
                                 </div>
-                                <input type="checkbox" name="mail" class="psec-switch" <?php echo ($settings['badbot_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="mail" <?php echo ($settings['badbot_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <button class="btn-shield-primary" name="save" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">

@@ -44,13 +44,9 @@ if (isset($_POST['save'])) {
     file_put_contents('config_settings.php', '<?php $settings = ' . var_export($settings, true) . '; ?>');
 }
 ?>
-<<div class="content-wrapper">
-
-<!--حاوية المحتوى-->
-<!--===================================================-->
-<!--حاوية المحتوى-->
-<!--===================================================-->
+<div class="content-wrapper">
 <?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+
     <header class="shield-page-header">
         <div class="shield-page-header__main">
             <h1 class="txt-h1">وحدة الحماية: مكافحة السبام</h1>
@@ -64,38 +60,34 @@ if (isset($_POST['save'])) {
             <?php
             $querysp = $mysqli->query("SELECT * FROM `psec_dnsbl-databases`");
             if ($settings['spam_protection'] == 1 && mysqli_num_rows($querysp) > 0): ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-success); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-check" class="icon icon-lg text-success"></i>
-                        <div>
-                            <h2 class="txt-h3 text-success">مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع محمي من <strong>المرسلين العشوائيين (سبام)</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-success" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-check" class="neon-icon-success neon-icon-animated micro-anim-fingerprint" style="width: 56px; height: 56px;"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-success" style="text-shadow: 0 0 10px rgba(0,255,150,0.3);">الحماية مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">الموقع محمي حالياً من **المرسلين العشوائيين (سبام)**.</p>
                     </div>
                 </div>
             <?php else: ?>
-                <div class="shield-card" style="border-inline-start: 4px solid var(--color-critical); margin-bottom: var(--space-6);">
-                    <div class="shield-card__body" style="display: flex; align-items: center; gap: var(--space-4);">
-                        <i data-lucide="shield-alert" class="icon icon-lg text-critical"></i>
-                        <div>
-                            <h2 class="txt-h3 text-critical">غير مفعل</h2>
-                            <p class="txt-body-md txt-secondary">الموقع غير محمي من <strong>المرسلين العشوائيين (سبام)</strong></p>
-                        </div>
+                <div class="neon-host-card neon-border-danger" style="padding: 25px; margin-bottom: var(--space-6); display: flex; align-items: center; gap: 20px;">
+                    <i data-lucide="shield-alert" class="neon-icon-pink neon-icon-animated micro-anim-cpu" style="width: 56px; height: 56px; filter: hue-rotate(300deg);"></i>
+                    <div style="text-align: right;">
+                        <h2 class="txt-h3 text-critical" style="text-shadow: 0 0 10px rgba(255,0,85,0.3);">الحماية غير مفعلة</h2>
+                        <p class="txt-body-md txt-secondary">الموقع حالياً **عرضة** لرسائل البريد المزعج والسبام.</p>
                     </div>
                 </div>
             <?php endif; ?>
 
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="display: flex; align-items: center; gap: var(--space-2);">
-                        <i data-lucide="database" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">قواعد بيانات السبام (DNSBL)</span>
+            <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 0;">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i data-lucide="database" class="neon-icon-info" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em;">قواعد بيانات السبام (DNSBL)</span>
                     </div>
-                    <button data-target="#add" data-toggle="modal" class="btn-shield-primary btn-shield-sm">
-                        <i data-lucide="plus" class="icon icon-sm"></i> إضافة قاعدة (DNSBL)
+                    <button type="button" data-target="#add" data-toggle="modal" class="btn-shield-primary btn-shield-sm" style="box-shadow: 0 0 10px rgba(0,210,255,0.2);">
+                        <i data-lucide="plus" class="icon icon-sm"></i> إضافة قاعدة جديدة
                     </button>
                 </div>
-                <div class="shield-card__body">
+                <div class="shield-card__body" style="padding: 20px;">
                     <form class="form-horizontal mb-lg" method="POST">
                         <div class="modal fade" id="add" role="dialog" tabindex="-1" aria-labelledby="add" aria-hidden="true">
                             <div class="modal-dialog">
@@ -185,7 +177,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">الحماية</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">تفعيل الحماية وحظر التهديدات</p>
                                 </div>
-                                <input type="checkbox" name="protection" class="psec-switch" <?php echo ($settings['spam_protection'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="protection" <?php echo ($settings['spam_protection'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-3);">
@@ -193,7 +188,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">التسجيل (Logging)</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">تسجيل التهديدات المكتشفة</p>
                                 </div>
-                                <input type="checkbox" name="logging" class="psec-switch" <?php echo ($settings['spam_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="logging" <?php echo ($settings['spam_logging'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -201,7 +199,10 @@ if (isset($_POST['save'])) {
                                     <p class="txt-body-md" style="font-weight: 500; margin: 0;">الإشعارات بالبريد</p>
                                     <p class="txt-body-sm txt-secondary" style="margin: 0;">تلقي إشعار عند الاكتشاف</p>
                                 </div>
-                                <input type="checkbox" name="mail" class="psec-switch" <?php echo ($settings['spam_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                <label class="custom-checkbox-wrapper">
+                                    <input type="checkbox" name="mail" <?php echo ($settings['spam_mail'] == 1) ? 'checked="checked"' : ''; ?> />
+                                    <div class="custom-checkbox-box"></div>
+                                </label>
                             </div>
 
                             <button class="btn-shield-primary" name="save" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">
