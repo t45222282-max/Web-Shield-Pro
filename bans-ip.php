@@ -76,52 +76,57 @@ if (isset($_POST['edit-ban'])) {
     $reason   = $_POST['reason'];
     
     if (!filter_var($ip, FILTER_VALIDATE_IP)) {
-        echo '<div style="background: var(--color-critical); color: var(--bg-base); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-4);"><i data-lucide="alert-triangle" class="icon icon-sm"></i> عنوان الـ <strong>IP</strong> المدخل غير صالح.</div>';
+        echo '<div style="background: rgba(255, 0, 85, 0.1); color: #FF0055; padding: var(--space-3); border-radius: var(--radius-md); border: 1px solid rgba(255, 0, 85, 0.3); margin-bottom: var(--space-4);"><i data-lucide="alert-triangle" class="icon icon-sm"></i> عنوان الـ <strong>IP</strong> المدخل غير صالح.</div>';
     } else if ($redirect == 1 and $url == NULL) {
-        echo '<div style="background: var(--color-critical); color: var(--bg-base); padding: var(--space-3); border-radius: var(--radius-md); margin-bottom: var(--space-4);"><i data-lucide="alert-triangle" class="icon icon-sm"></i> من فضلك أدخل رابط التوجيه للمستخدم المحظور.</div>';
+        echo '<div style="background: rgba(255, 0, 85, 0.1); color: #FF0055; padding: var(--space-3); border-radius: var(--radius-md); border: 1px solid rgba(255, 0, 85, 0.3); margin-bottom: var(--space-4);"><i data-lucide="alert-triangle" class="icon icon-sm"></i> من فضلك أدخل رابط التوجيه للمستخدم المحظور.</div>';
     } else {
         $update = $mysqli->query("UPDATE `psec_bans` SET ip='$ip', redirect='$redirect', url='$url', reason='$reason' WHERE id='$id'");
+        echo '<meta http-equiv="refresh" content="0; url=bans-ip.php">';
     }
 }
 ?>         
             <form action="" method="post">
-                <div class="shield-card" style="margin-bottom: var(--space-6);">
-                    <div class="shield-card__header">
-                        <i data-lucide="edit" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">تعديل حظر عنوان IP</span>
+                <div class="neon-host-card neon-border-purple" style="margin-bottom: var(--space-6); padding: 0;">
+                    <div class="shield-card__header" style="padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div style="display: flex; align-items: center; gap: var(--space-2);">
+                            <i data-lucide="edit" class="neon-icon-purple neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                            <span class="shield-card__title" style="font-size: 1.2em;">تعديل حظر عنوان IP</span>
+                        </div>
                     </div>
-                    <div class="shield-card__body">
+                    <div class="shield-card__body" style="padding: 20px;">
                         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">عنوان الـ IP:</label>
-                                <input name="ip" type="text" value="<?php echo $row['ip']; ?>" required style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">عنوان الـ IP:</label>
+                                <input name="ip" type="text" value="<?php echo $row['ip']; ?>" required style="width: 100%; border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" onfocus="this.style.borderColor=\'#8B5CF6\'; this.style.boxShadow=\'0 0 10px rgba(139, 92, 246, 0.2)\'" onblur="this.style.borderColor=\'rgba(139, 92, 246, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">السبب:</label>
-                                <input name="reason" type="text" value="<?php echo $row['reason']; ?>" style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">السبب:</label>
+                                <input name="reason" type="text" value="<?php echo $row['reason']; ?>" style="width: 100%; border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" onfocus="this.style.borderColor=\'#8B5CF6\'; this.style.boxShadow=\'0 0 10px rgba(139, 92, 246, 0.2)\'" onblur="this.style.borderColor=\'rgba(139, 92, 246, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">إعادة التوجيه إلى الصفحة / الموقع:</label>
-                                <select name="redirect" required style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
-                                    <option value="0" <?php echo ($row['redirect'] == 0) ? 'selected' : ''; ?>>لا</option>
-                                    <option value="1" <?php echo ($row['redirect'] == 1) ? 'selected' : ''; ?>>نعم</option>
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">إعادة التوجيه إلى الصفحة / الموقع:</label>
+                                <select name="redirect" required style="width: 100%; border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" onfocus="this.style.borderColor=\'#8B5CF6\'; this.style.boxShadow=\'0 0 10px rgba(139, 92, 246, 0.2)\'" onblur="this.style.borderColor=\'rgba(139, 92, 246, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
+                                    <option value="0" style="background: var(--bg-surface-1);" <?php echo ($row['redirect'] == 0) ? 'selected' : ''; ?>>لا</option>
+                                    <option value="1" style="background: var(--bg-surface-1);" <?php echo ($row['redirect'] == 1) ? 'selected' : ''; ?>>نعم</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">رابط إعادة التوجيه:</label>
-                                <input name="url" type="url" value="<?php echo $row['url']; ?>" style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">رابط إعادة التوجيه:</label>
+                                <input name="url" type="url" value="<?php echo $row['url']; ?>" style="width: 100%; border: 1px solid rgba(139, 92, 246, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" onfocus="this.style.borderColor=\'#8B5CF6\'; this.style.boxShadow=\'0 0 10px rgba(139, 92, 246, 0.2)\'" onblur="this.style.borderColor=\'rgba(139, 92, 246, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">تاريخ الحظر:</label>
-                                <input name="date" type="text" value="<?php echo $row['date'] . ' at ' . $row['time']; ?>" readonly style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-1); color: var(--text-secondary); padding: var(--space-2); border-radius: var(--radius-sm); cursor: not-allowed;">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">تاريخ الحظر:</label>
+                                <input name="date" type="text" value="<?php echo $row['date'] . ' at ' . $row['time']; ?>" readonly style="width: 100%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: var(--text-muted); padding: var(--space-2); border-radius: var(--radius-sm); cursor: not-allowed;">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">محظور تلقائيًا:</label>
-                                <input name="autoban" type="text" value="<?php echo ($row['autoban'] == 1) ? 'نعم' : 'لا'; ?>" readonly style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-1); color: var(--text-secondary); padding: var(--space-2); border-radius: var(--radius-sm); cursor: not-allowed;">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">محظور تلقائيًا:</label>
+                                <input name="autoban" type="text" value="<?php echo ($row['autoban'] == 1) ? 'نعم' : 'لا'; ?>" readonly style="width: 100%; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.02); color: var(--text-muted); padding: var(--space-2); border-radius: var(--radius-sm); cursor: not-allowed;">
                             </div>
                             <div style="display: flex; gap: var(--space-3); margin-top: var(--space-2);">
-                                <button class="btn-shield-primary" name="edit-ban" type="submit" style="flex: 2; justify-content: center;">حفظ التعديلات</button>
-                                <a href="bans-ip.php" class="btn-shield-secondary" style="flex: 1; justify-content: center;">إلغاء</a>
+                                <button class="btn-shield-primary" name="edit-ban" type="submit" style="flex: 2; justify-content: center; box-shadow: 0 0 15px rgba(139, 92, 246, 0.4); border: 1px solid rgba(139, 92, 246, 0.6); background: rgba(139, 92, 246, 0.15); color: #fff;">
+                                    <i data-lucide="save" style="width: 18px; height: 18px;"></i> حفظ التعديلات
+                                </button>
+                                <a href="bans-ip.php" class="btn-shield-secondary" style="flex: 1; justify-content: center; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">إلغاء</a>
                             </div>
                         </div>
                     </div>
@@ -131,90 +136,90 @@ if (isset($_POST['edit-ban'])) {
 }
 ?>
 
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="neon-panel-cyan" style="margin-bottom: var(--space-6);">
+                <div class="shield-card__header" style="display: flex; justify-content: space-between; align-items: center; padding: 20px 20px 0;">
                     <div style="display: flex; align-items: center; gap: var(--space-2);">
-                        <i data-lucide="list" class="icon icon-sm text-brand"></i>
-                        <span class="shield-card__title">عناوين IP المحظورة</span>
+                        <i data-lucide="shield-off" class="neon-icon-info neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em;">عناوين IP المحظورة</span>
                     </div>
-                    <a href="?delete-all" class="btn-shield-critical btn-shield-sm" title="حذف جميع حظر عناوين الـ IP">
-                        <i data-lucide="trash-2" class="icon icon-sm"></i> حذف الكل
+                    <a href="?delete-all" class="btn-shield-critical btn-shield-sm" style="box-shadow: 0 0 10px rgba(255,0,85,0.2); border: 1px solid rgba(255,0,85,0.3); transition: all 0.3s ease;" title="حذف جميع حظر عناوين الـ IP">
+                        <i data-lucide="trash-2" class="neon-icon-pink" style="width: 16px; height: 16px; filter: hue-rotate(300deg);"></i> حذف الكل
                     </a>
                 </div>
-                <div class="shield-card__body">
-                    <div class="shield-table-wrapper">                
-                        <table class="shield-table" id="dt-basicbans" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>عنوان الـ IP</th>
-                                    <th>تاريخ الحظر</th>
-                                    <th>إعادة التوجيه</th>
-                                    <th>تلقائي</th>
-                                    <th>الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                <div class="shield-table-wrapper" style="padding: 20px;">                
+                    <table class="shield-table" id="dt-basicbans" width="100%">
+                        <thead>
+                            <tr>
+                                <th>عنوان الـ IP</th>
+                                <th>تاريخ الحظر</th>
+                                <th>إعادة التوجيه</th>
+                                <th>تلقائي</th>
+                                <th>الإجراءات</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 <?php
-$query = $mysqli->query("SELECT * FROM `psec_bans`");
+$query = $mysqli->query("SELECT * FROM `psec_bans` ORDER by id DESC");
 while ($row = $query->fetch_assoc()) {
 echo '
-                                <tr>
-                                    <td data-label="عنوان الـ IP" style="font-family: monospace;">' . $row['ip'] . '</td>
-                                    <td data-label="تاريخ الحظر" data-sort="' . strtotime($row['date']) . '">' . $row['date'] . '</td>
-                                    <td data-label="إعادة التوجيه">';
-if ($row['redirect'] == 1) { echo '<span class="shield-badge shield-badge--success">نعم</span>'; } else { echo '<span class="shield-badge shield-badge--secondary">لا</span>'; }
+                            <tr>
+                                <td data-label="عنوان الـ IP" style="font-family: monospace; font-size: 1.1em; color: var(--color-info);">' . $row['ip'] . '</td>
+                                <td data-label="تاريخ الحظر" data-sort="' . strtotime($row['date']) . '">' . $row['date'] . '</td>
+                                <td data-label="إعادة التوجيه">';
+if ($row['redirect'] == 1) { echo '<span style="color: var(--color-success); background: rgba(0,255,136,0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(0,255,136,0.2);"><i data-lucide="check" style="width:14px;height:14px;vertical-align:middle;"></i> نعم</span>'; } else { echo '<span style="color: var(--text-secondary); background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);"><i data-lucide="x" style="width:14px;height:14px;vertical-align:middle;"></i> لا</span>'; }
 echo '</td>
-                                    <td data-label="محظور تلقائيًا">';
-if ($row['autoban'] == 1) { echo '<span class="shield-badge shield-badge--warning">نعم</span>'; } else { echo '<span class="shield-badge shield-badge--secondary">لا</span>'; }
+                                <td data-label="محظور تلقائيًا">';
+if ($row['autoban'] == 1) { echo '<span style="color: var(--color-warning); background: rgba(255,187,0,0.1); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,187,0,0.2);"><i data-lucide="zap" style="width:14px;height:14px;vertical-align:middle;"></i> نعم</span>'; } else { echo '<span style="color: var(--text-secondary); background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.1);"><i data-lucide="user" style="width:14px;height:14px;vertical-align:middle;"></i> يدوي</span>'; }
 echo '</td>
-                                    <td data-label="الإجراءات">
-                                        <div style="display: flex; gap: var(--space-2);">
-                                            <a href="?edit-id=' . $row['id'] . '" class="btn-shield-secondary btn-shield-sm"><i data-lucide="edit" class="icon icon-sm"></i> تعديل</a>
-                                            <a href="?delete-id=' . $row['id'] . '" class="btn-shield-critical btn-shield-sm"><i data-lucide="unlock" class="icon icon-sm"></i> رفع الحظر</a>
-                                        </div>
-                                    </td>
-                                </tr>
+                                <td data-label="الإجراءات">
+                                    <div style="display: flex; gap: var(--space-2);">
+                                        <a href="?edit-id=' . $row['id'] . '" class="btn-shield-secondary btn-shield-sm" style="box-shadow: 0 0 10px rgba(139, 92, 246, 0.2); border: 1px solid rgba(139, 92, 246, 0.3);" title="تعديل"><i data-lucide="edit" class="neon-icon-purple" style="width:16px;height:16px;"></i></a>
+                                        <a href="?delete-id=' . $row['id'] . '" class="btn-shield-critical btn-shield-sm" style="box-shadow: 0 0 10px rgba(0,255,136,0.2); border: 1px solid rgba(0,255,136,0.3);" title="رفع الحظر"><i data-lucide="unlock" style="width:16px;height:16px; color: var(--color-success);"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
 ';
 }
 ?>
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
 
         <!-- Sidebar (1/3) -->
         <div>
-            <div class="shield-card" style="margin-bottom: var(--space-6);">
-                <div class="shield-card__header">
-                    <i data-lucide="plus-circle" class="icon icon-sm text-brand"></i>
-                    <span class="shield-card__title">إضافة حظر IP</span>
+            <div class="neon-host-card neon-border-pink" style="margin-bottom: var(--space-6); padding: 0; position: sticky; top: 100px;">
+                <div class="shield-card__header" style="padding: 20px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <div style="display: flex; align-items: center; gap: var(--space-2);">
+                        <i data-lucide="plus-circle" class="neon-icon-pink neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                        <span class="shield-card__title" style="font-size: 1.2em;">إضافة حظر IP</span>
+                    </div>
                 </div>
-                <div class="shield-card__body">
+                <div class="shield-card__body" style="padding: 20px;">
                     <form action="" method="post">
                         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">عنوان الـ IP:</label>
-                                <input name="ip" type="text" required style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);" placeholder="مثال: 192.168.1.1">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">عنوان الـ IP:</label>
+                                <input name="ip" type="text" required style="width: 100%; border: 1px solid rgba(255, 0, 85, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="مثال: 192.168.1.1" onfocus="this.style.borderColor=\'#FF0055\'; this.style.boxShadow=\'0 0 10px rgba(255, 0, 85, 0.2)\'" onblur="this.style.borderColor=\'rgba(255, 0, 85, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">السبب:</label>
-                                <input name="reason" type="text" style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);" placeholder="سبب الحظر...">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">السبب:</label>
+                                <input name="reason" type="text" style="width: 100%; border: 1px solid rgba(255, 0, 85, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="سبب الحظر..." onfocus="this.style.borderColor=\'#FF0055\'; this.style.boxShadow=\'0 0 10px rgba(255, 0, 85, 0.2)\'" onblur="this.style.borderColor=\'rgba(255, 0, 85, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">إعادة التوجيه:</label>
-                                <select name="redirect" required style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);">
-                                    <option value="0" selected>لا</option>
-                                    <option value="1">نعم</option>
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">إعادة التوجيه:</label>
+                                <select name="redirect" required style="width: 100%; border: 1px solid rgba(255, 0, 85, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" onfocus="this.style.borderColor=\'#FF0055\'; this.style.boxShadow=\'0 0 10px rgba(255, 0, 85, 0.2)\'" onblur="this.style.borderColor=\'rgba(255, 0, 85, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
+                                    <option value="0" style="background: var(--bg-surface-1);" selected>لا</option>
+                                    <option value="1" style="background: var(--bg-surface-1);">نعم</option>
                                 </select>
                             </div>
                             <div>
-                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2);">رابط التوجيه:</label>
-                                <input name="url" type="url" style="width: 100%; border: 1px solid var(--border-default); background: var(--bg-surface-3); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm);" placeholder="https://...">
+                                <label class="txt-body-sm" style="font-weight: 500; display: block; margin-bottom: var(--space-2); color: var(--text-secondary);">رابط التوجيه:</label>
+                                <input name="url" type="url" style="width: 100%; border: 1px solid rgba(255, 0, 85, 0.3); background: rgba(0,0,0,0.2); color: var(--text-primary); padding: var(--space-2); border-radius: var(--radius-sm); outline: none; transition: border-color 0.3s ease; box-shadow: inset 0 2px 4px rgba(0,0,0,0.1);" placeholder="https://..." onfocus="this.style.borderColor=\'#FF0055\'; this.style.boxShadow=\'0 0 10px rgba(255, 0, 85, 0.2)\'" onblur="this.style.borderColor=\'rgba(255, 0, 85, 0.3)\'; this.style.boxShadow=\'inset 0 2px 4px rgba(0,0,0,0.1)\'">
                             </div>
-                            <button class="btn-shield-critical" name="ban-ip" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">
-                                <i data-lucide="ban" class="icon icon-sm"></i> حظر العنوان
+                            <button class="btn-shield-critical" name="ban-ip" type="submit" style="width: 100%; justify-content: center; margin-top: var(--space-2); box-shadow: 0 0 15px rgba(255,0,85,0.4); border: 1px solid rgba(255,0,85,0.6); background: rgba(255,0,85,0.15); color: #fff;">
+                                <i data-lucide="ban" style="width: 18px; height: 18px;"></i> حظر العنوان
                             </button>
                         </div>
                     </form>

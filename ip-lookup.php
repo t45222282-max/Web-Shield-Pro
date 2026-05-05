@@ -47,7 +47,7 @@ if (isset($_GET['ip'])) {
         $isp         = "Unknown";
     }
 ?>
-<<div class="content-wrapper">
+<div class="content-wrapper">
 
 <!--حاوية المحتوى-->
 <!--===================================================-->

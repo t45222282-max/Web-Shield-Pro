@@ -12,7 +12,7 @@ if (isset($_GET['delete-id'])) {
     $query = $mysqli->query("DELETE FROM `psec_bans-ranges` WHERE id='$id'");
 }
 ?>
-<<div class="content-wrapper">
+<div class="content-wrapper">
 
 <!--CONTAINER المحتوى-->
 <!--===================================================-->

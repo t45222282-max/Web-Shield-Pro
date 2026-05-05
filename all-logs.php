@@ -12,7 +12,7 @@ if (isset($_GET['delete-all'])) {
     $query = $mysqli->query("TRUNCATE TABLE `psec_logs`");
 }
 ?>   
-<<div class="content-wrapper">
+<div class="content-wrapper">
 
 <!--CONTENT CONTAINER-->
 <!--===================================================-->

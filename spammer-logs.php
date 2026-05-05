@@ -12,7 +12,7 @@ if (isset($_GET['delete-all'])) {
     $query = $mysqli->query("DELETE FROM `psec_logs` WHERE type='Spammer'");
 }
 ?>
-<<div class="content-wrapper">
+<div class="content-wrapper">
 
 <!-- حاوية المحتوى -->
 <!--===================================================-->

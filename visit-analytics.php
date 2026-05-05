@@ -223,47 +223,124 @@ $mscount3 = $msquery3->num_rows;
                         </div>
 <?php endif; ?>
                         
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+    <div class="shield-grid shield-grid--2" style="margin-bottom: var(--space-6);">
+        <div class="neon-panel-cyan" style="grid-column: span 2;">
+            <div class="shield-card__header" style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <i data-lucide="line-chart" class="neon-icon-info neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.2em;">الزيارات لهذا الشهر</span>
+                </div>
+            </div>
+            <div class="shield-card__body" style="padding: 20px;">
+<?php else: ?>
                         <br /><h4 class="shield-card">الزيارات لهذا الشهر</h4><br />
+<?php endif; ?>
                         
                             <canvas id="visits-chart"></canvas>
                             
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+            </div>
+        </div>
+
+        <div class="neon-panel-purple">
+            <div class="shield-card__header" style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <i data-lucide="globe" class="neon-icon-purple neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.2em;">إحصائيات المتصفح</span>
+                </div>
+            </div>
+            <div class="shield-card__body" style="padding: 20px;">
+<?php else: ?>
                         <br /><h4 class="shield-card">الإحصائيات العامة</h4><br />    
                             
                         <div class="row">
                              <div class="col-md-6">
                                   <center><h5><i class="fas fa-globe"></i> إحصائيات المتصفح</h5></center>
+<?php endif; ?>
                                   <div id="canvas-holder" class="width100">
                                       <canvas id="browser-graph"></canvas>
                                   </div>
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+            </div>
+        </div>
+
+        <div class="neon-panel-pink">
+            <div class="shield-card__header" style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <i data-lucide="monitor" class="neon-icon-pink neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.2em;">إحصائيات نظام التشغيل</span>
+                </div>
+            </div>
+            <div class="shield-card__body" style="padding: 20px;">
+<?php else: ?>
                              </div>
                              
                              <div class="col-md-6">
                                   <center><h5><i class="fas fa-desktop"></i> إحصائيات نظام التشغيل</h5></center>
+<?php endif; ?>
                                   <div id="canvas-holder" class="width100">
                                       <canvas id="os-graph"></canvas>
                                   </div>
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+            </div>
+        </div>
+        
+        <div class="neon-panel-info">
+            <div class="shield-card__header" style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <i data-lucide="smartphone" class="neon-icon-info neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.2em;">إحصائيات الأجهزة</span>
+                </div>
+            </div>
+            <div class="shield-card__body" style="padding: 20px;">
+<?php else: ?>
                              </div>
                           </div>
                           <div class="row">
                              <div class="col-md-6">
                                   <br /><center><h5><i class="fas fa-mobile-alt"></i> إحصائيات الأجهزة</h5></center>
+<?php endif; ?>
                                   <div id="canvas-holder" class="width100">
                                       <canvas id="device-graph"></canvas>
                                   </div>
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+            </div>
+        </div>
+
+        <div class="neon-panel-cyan" style="grid-column: span 2;">
+            <div class="shield-card__header" style="padding: 20px 20px 0;">
+                <div style="display: flex; align-items: center; gap: var(--space-2);">
+                    <i data-lucide="map" class="neon-icon-info neon-icon-animated micro-anim-pulse" style="width: 24px; height: 24px;"></i>
+                    <span class="shield-card__title" style="font-size: 1.2em;">الزيارات حسب البلد</span>
+                </div>
+            </div>
+            <div class="shield-table-wrapper" style="padding: 20px;">
+<?php else: ?>
                              </div>
                         </div>
                         
                         <div class="col-md-12">
                         <hr />
                             <h5>الزيارات حسب البلد</h5><br />
+<?php endif; ?>
                             
                         <table id="dt-basic" class="shield-table" width="100%">
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+                                    <thead>
+                                        <tr>
+                                          <th><i data-lucide="globe" class="icon icon-sm text-brand" style="vertical-align: middle;"></i> البلد</th>
+                                          <th><i data-lucide="users" class="icon icon-sm text-brand" style="vertical-align: middle;"></i> الزوار</th>
+                                        </tr>
+                                    </thead>
+<?php else: ?>
                                     <thead>
                                         <tr>
                                           <th><i class="fas fa-globe"></i> البلد</th>
                                           <th><i class="fas fa-users"></i> الزوار</th>
                                         </tr>
                                     </thead>
+<?php endif; ?>
                                     <tbody>
 <?php
 $countries = array(
@@ -479,8 +556,13 @@ foreach ($countries as $country) {
 </table>
 
                         </div>
-					
-                        </div>
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+            </div>
+        </div>
+    </div>
+<?php else: ?>
+                     </div>
+<?php endif; ?>
                      </div>
                     
 				</div>

@@ -1,6 +1,12 @@
 <?php
 require "core.php";
 head();
+$isShield = (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield');
+$calloutClass = $isShield ? 'neon-host-card neon-border-info' : 'callout callout-default';
+$badgeSuccess = $isShield ? 'shield-badge shield-badge--success' : 'badge badge-success';
+$badgeDanger  = $isShield ? 'shield-badge shield-badge--critical' : 'badge badge-danger';
+$badgeWarning = $isShield ? 'shield-badge shield-badge--warning' : 'badge badge-warning';
+?>
 
 session_name("WebsiteID");
 ?>
@@ -8,6 +14,14 @@ session_name("WebsiteID");
 
 <!--حاوية المحتوى-->
 <!--===================================================-->
+<?php if (!empty($settings['ui_engine']) && $settings['ui_engine'] === 'shield'): ?>
+    <header class="shield-page-header">
+        <div class="shield-page-header__main">
+            <h1 class="txt-h1">فحص التكوين والأمان</h1>
+            <p class="txt-body-sm txt-secondary">مراجعة إعدادات الخادم لضمان أقصى درجات الأمان.</p>
+        </div>
+    </header>
+<?php else: ?>
 <div class="content-header">
     
     <div class="container-fluid">
@@ -24,7 +38,7 @@ session_name("WebsiteID");
       </div>
     </div>
 </div>
-
+<?php endif; ?>
     <!--محتوى الصفحة-->
     <!--===================================================-->
     <div class="content">
@@ -1062,31 +1076,31 @@ foreach ($all_result_codes as $sev) {
 ?>
 		<tr>
 			<td class="text-center">
-			<h5><span class="badge
+			<h5><span class="<?php echo $isShield ? 'shield-badge' : 'badge'; ?>
 <?php
         if ($res['result'] == TEST_Critical) {
-            echo 'badge-dark';
+            echo $isShield ? ' shield-badge--critical' : ' badge-dark';
         }
         if ($res['result'] == TEST_High) {
-            echo 'badge-danger';
+            echo $isShield ? ' shield-badge--critical' : ' badge-danger';
         }
         if ($res['result'] == TEST_Medium) {
-            echo 'badge-warning';
+            echo $isShield ? ' shield-badge--warning' : ' badge-warning';
         }
         if ($res['result'] == TEST_Low) {
-            echo 'badge-primary';
+            echo $isShield ? ' shield-badge--primary' : ' badge-primary';
         }
         if ($res['result'] == TEST_Maybe) {
-            echo 'badge-info';
+            echo $isShield ? ' shield-badge--info' : ' badge-info';
         }
         if ($res['result'] == TEST_Advice) {
-            echo 'badge-light';
+            echo $isShield ? ' shield-badge--secondary' : ' badge-light';
         }
         if ($res['result'] == TEST_Okay) {
-            echo 'badge-success';
+            echo $isShield ? ' shield-badge--success' : ' badge-success';
         }
         if ($res['result'] == TEST_Skipped) {
-            echo 'badge-secondary';
+            echo $isShield ? ' shield-badge--secondary' : ' badge-secondary';
         }
 ?>
 ">
@@ -1129,31 +1143,31 @@ foreach ($all_result_codes as $sev) {
 ?>"><?php
     echo $sev;
 ?>:
-<h5><span class="badge  
+<h5><span class="<?php echo $isShield ? 'shield-badge' : 'badge'; ?>  
 <?php
     if ($sev == TEST_Critical) {
-        echo 'badge-dark';
+        echo $isShield ? ' shield-badge--critical' : ' badge-dark';
     }
     if ($sev == TEST_High) {
-        echo 'badge-danger';
+        echo $isShield ? ' shield-badge--critical' : ' badge-danger';
     }
     if ($sev == TEST_Medium) {
-        echo 'badge-warning';
+        echo $isShield ? ' shield-badge--warning' : ' badge-warning';
     }
     if ($sev == TEST_Low) {
-        echo 'badge-primary';
+        echo $isShield ? ' shield-badge--primary' : ' badge-primary';
     }
     if ($sev == TEST_Maybe) {
-        echo 'badge-info';
+        echo $isShield ? ' shield-badge--info' : ' badge-info';
     }
     if ($sev == TEST_Advice) {
-        echo 'badge-light';
+        echo $isShield ? ' shield-badge--secondary' : ' badge-light';
     }
     if ($sev == TEST_Okay) {
-        echo 'badge-success';
+        echo $isShield ? ' shield-badge--success' : ' badge-success';
     }
     if ($sev == TEST_Skipped) {
-        echo 'badge-secondary';
+        echo $isShield ? ' shield-badge--secondary' : ' badge-secondary';
     }
 ?>
 ">
