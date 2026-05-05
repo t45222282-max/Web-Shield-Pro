@@ -1,0 +1,21 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+require_once __DIR__ . '/config.php';
+
+$request = json_encode($_REQUEST);
+
+$patterns = [
+    "/(\%27)|(\')|(\-\-)|(\%23)|(#)/i",
+    "/(union|select|insert|delete|update|drop|or|and)/i"
+];
+
+foreach ($patterns as $pattern) {
+    if (preg_match($pattern, $request)) {
+        header("Location: /market/pro1/pages/blocked.php");
+        exit();
+    }
+}
+?>
