@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../pro1/project-security.php';
+require_once __DIR__ . '/../../project-security.php';
 session_start ();
 include ("library/database.php");
 $categories= "select * from categories";

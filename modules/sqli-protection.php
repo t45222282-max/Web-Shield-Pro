@@ -92,6 +92,7 @@ if ($settings['sqli_protection'] == 1) {
     }
     
     $query_string = $_SERVER['QUERY_STRING'];
+    $decoded_query_string = urldecode($query_string);
     
     // Patterns, used to detect Malicous Request (SQL Injection)
     $patterns = array(
@@ -137,7 +138,7 @@ if ($settings['sqli_protection'] == 1) {
         "=%27$"
     );
     foreach ($patterns as $pattern) {
-        if (strpos(strtolower($query_string), strtolower($pattern)) !== false) {
+        if (strpos(strtolower($query_string), strtolower($pattern)) !== false || strpos(strtolower($decoded_query_string), strtolower($pattern)) !== false) {
             $querya = strip_tags(addslashes($query_string));
             $type   = "SQLi";
 

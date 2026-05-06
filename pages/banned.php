@@ -1,5 +1,8 @@
 <?php
 include "header.php";
+
+$query = $mysqli->query("SELECT * FROM `psec_pages-layolt` WHERE page='Banned'");
+$row   = mysqli_fetch_array($query);
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +10,7 @@ include "header.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الموقع تحت الصيانة</title>
+    <title>Access Denied - Web Shield</title>
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- Font Awesome for icons -->
@@ -65,7 +68,7 @@ include "header.php";
         }
         .maintenance-icon {
             font-size: 5rem;
-            color: #4f46e5;
+            color: #dc3545; /* Red color for ban */
             margin-bottom: 1.5rem;
             animation: pulse 2s infinite;
         }
@@ -146,9 +149,8 @@ include "header.php";
 
     <!-- Maintenance Container -->
     <div class="maintenance-container">
-        <i class="fas fa-tools maintenance-icon"></i>
-        <h1>الموقع تحت الصيانة</h1>
-        <p>نعتذر عن الإزعاج، الموقع خارج الخدمة حاليًا بسبب أعمال الصيانة. يرجى المحاولة لاحقًا.</p>
+        <i class="fas fa-ban maintenance-icon"></i>
+        <h1><?php echo html_entity_decode($row['text']); ?></h1>
         <a href="mailto:<?php echo $settings['email']; ?>" class="btn btn-support" target="_blank">
             <i class="fas fa-envelope"></i> تواصل مع الدعم
         </a>

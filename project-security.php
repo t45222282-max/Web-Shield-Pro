@@ -1,4 +1,7 @@
 <?php
+$psec_old_cwd = getcwd();
+chdir(__DIR__);
+
 include "config.php";
 include "modules/core.php";
 
@@ -50,4 +53,6 @@ if ($wquery->num_rows <= 0 && $wfquery->num_rows <= 0) {
 		include "modules/live-traffic.php";
     }
 }
+
+chdir($psec_old_cwd);
 ?>
