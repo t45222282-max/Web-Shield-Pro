@@ -51,8 +51,6 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                 </a>
             </li>
 
-
-
             <!-- ── القوائم البيضاء ── -->
             <li class="shield-nav__title">القوائم البيضاء</li>
 
@@ -150,25 +148,25 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
             if (isset($mysqli) && $mysqli instanceof mysqli) {
                 // Log counts
                 $lquery1 = $mysqli->query("SELECT id FROM `psec_logs`");
-                $lcount1 = $lquery1 ? mysqli_num_rows($lquery1) : 0;
+                $lcount1 = ($lquery1 instanceof mysqli_result) ? mysqli_num_rows($lquery1) : 0;
                 $lquery2 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='SQLi'");
-                $lcount2 = $lquery2 ? mysqli_num_rows($lquery2) : 0;
+                $lcount2 = ($lquery2 instanceof mysqli_result) ? mysqli_num_rows($lquery2) : 0;
                 $lquery3 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
-                $lcount3 = $lquery3 ? mysqli_num_rows($lquery3) : 0;
+                $lcount3 = ($lquery3 instanceof mysqli_result) ? mysqli_num_rows($lquery3) : 0;
                 $lquery4 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Proxy'");
-                $lcount4 = $lquery4 ? mysqli_num_rows($lcount4) : 0;
+                $lcount4 = ($lquery4 instanceof mysqli_result) ? mysqli_num_rows($lquery4) : 0;
                 $lquery5 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Spammer'");
-                $lcount5 = $lquery5 ? mysqli_num_rows($lquery5) : 0;
+                $lcount5 = ($lquery5 instanceof mysqli_result) ? mysqli_num_rows($lquery5) : 0;
 
                 // Ban counts
                 $bquery1 = $mysqli->query("SELECT id FROM `psec_bans`");
-                $bcount1 = $bquery1 ? mysqli_num_rows($bquery1) : 0;
+                $bcount1 = ($bquery1 instanceof mysqli_result) ? mysqli_num_rows($bquery1) : 0;
                 $bquery2 = $mysqli->query("SELECT id FROM `psec_bans-country`");
-                $bcount2 = $bquery2 ? mysqli_num_rows($bquery2) : 0;
+                $bcount2 = ($bquery2 instanceof mysqli_result) ? mysqli_num_rows($bquery2) : 0;
                 $bquery3 = $mysqli->query("SELECT id FROM `psec_bans-ranges`");
-                $bcount3 = $bquery3 ? mysqli_num_rows($bquery3) : 0;
+                $bcount3 = ($bquery3 instanceof mysqli_result) ? mysqli_num_rows($bquery3) : 0;
                 $bquery4 = $mysqli->query("SELECT id FROM `psec_bans-other`");
-                $bcount4 = $bquery4 ? mysqli_num_rows($bquery4) : 0;
+                $bcount4 = ($bquery4 instanceof mysqli_result) ? mysqli_num_rows($bquery4) : 0;
             }
             ?>
 
