@@ -13,6 +13,113 @@ const ShieldUI = {
     this.initLucide();
     this.initPalette();
     this.initIPHoverCards();
+    this.initTreeviews();
+    this.initTableSkeletons();
+  },
+
+  /* ── Table Skeletons ── */
+  initTableSkeletons() {
+    const tableWrappers = document.querySelectorAll('.shield-table-wrapper');
+    if (tableWrappers.length === 0) return;
+
+    tableWrappers.forEach(wrapper => {
+      // Create skeleton overlay HTML
+      const skeletonHTML = `
+        <div class="shield-table-skeleton">
+          <div class="shield-table-skeleton-row">
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 2;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+          </div>
+          <div class="shield-table-skeleton-row">
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 2;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+          </div>
+          <div class="shield-table-skeleton-row">
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 2;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+            <div class="shield-table-skeleton-cell" style="flex: 1;"></div>
+          </div>
+        </div>
+      `;
+      wrapper.insertAdjacentHTML('beforeend', skeletonHTML);
+      
+      // Add loading state initially if DataTables is present
+      const table = wrapper.querySelector('table');
+      if (table && table.id && window.jQuery) {
+        wrapper.classList.add('is-loading');
+        
+        // Listen for DataTables init event
+        window.jQuery('#' + table.id).on('init.dt', function() {
+          setTimeout(() => {
+            wrapper.classList.remove('is-loading');
+          }, 300); // slight delay for smooth transition
+        });
+        
+        // Listen for draw event (e.g. pagination) to show skeleton briefly
+        window.jQuery('#' + table.id).on('preDraw.dt', function() {
+          wrapper.classList.add('is-loading');
+        }).on('draw.dt', function() {
+          setTimeout(() => {
+            wrapper.classList.remove('is-loading');
+          }, 300);
+        });
+      }
+    });
+  },
+
+  /* ── Treeview Menus ── */
+  initTreeviews() {
+    const treeviewLinks = document.querySelectorAll('.shield-nav__item.shield-nav__has-treeview > a');
+    
+    treeviewLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const parent = link.parentElement;
+        const treeview = parent.querySelector('.shield-nav__treeview');
+        
+        if (!treeview) return;
+        
+        // Toggle open state
+        const isOpen = treeview.classList.contains('is-open');
+        
+        // Close siblings if you want accordion style (optional, let's keep it simple for now)
+        // document.querySelectorAll('.shield-nav__treeview.is-open').forEach(tv => {
+        //   if (tv !== treeview) {
+        //     tv.classList.remove('is-open');
+        //     tv.parentElement.classList.remove('is-expanded');
+        //   }
+        // });
+
+        if (isOpen) {
+          treeview.classList.remove('is-open');
+          parent.classList.remove('is-expanded');
+        } else {
+          treeview.classList.add('is-open');
+          parent.classList.add('is-expanded');
+        }
+      });
+    });
+
+    // Auto-open treeviews if a child is active
+    document.querySelectorAll('.shield-nav__treeview .shield-nav__link.is-active').forEach(activeLink => {
+      const treeview = activeLink.closest('.shield-nav__treeview');
+      const parent = activeLink.closest('.shield-nav__item.shield-nav__has-treeview');
+      if (treeview && parent) {
+        treeview.classList.add('is-open');
+        parent.classList.add('is-expanded');
+        
+        // Also ensure parent link looks somewhat active or highlighted
+        const parentLink = parent.querySelector('> a');
+        if (parentLink) {
+          parentLink.classList.add('is-active');
+        }
+      }
+    });
   },
 
   /* ── IP Hover Cards (Advanced Tooltips) ── */

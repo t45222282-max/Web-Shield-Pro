@@ -35,3 +35,45 @@ html[data-ui-engine="shield"] .skeleton--circle {
   width: 32px; 
   height: 32px; 
 }
+
+/* ── Table Skeleton Overlay ── */
+html[data-ui-engine="shield"] .shield-table-skeleton {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 60px 20px 20px;
+  gap: var(--space-4);
+  border-radius: var(--radius-lg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+html[data-ui-engine="shield"] .shield-table-wrapper.is-loading .shield-table-skeleton {
+  opacity: 1;
+  visibility: visible;
+}
+
+html[data-ui-engine="shield"] .shield-table-skeleton-row {
+  display: flex;
+  gap: var(--space-4);
+  width: 100%;
+}
+
+html[data-ui-engine="shield"] .shield-table-skeleton-cell {
+  height: 24px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(0, 210, 255, 0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shield-table-shimmer 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@keyframes shield-table-shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
