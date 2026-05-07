@@ -51,6 +51,16 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                 </a>
             </li>
 
+            <li class="shield-nav__item">
+                <a href="settings-2fa.php"
+                   class="shield-nav__link <?= ($current_page === 'settings-2fa.php') ? 'is-active' : '' ?>"
+                   data-label="المصادقة الثنائية">
+                    <i data-lucide="key-round" class="icon icon-sm"></i>
+                    <span>المصادقة الثنائية</span>
+                    <span class="status-dot <?= (!empty($settings['2fa_enabled']) && $settings['2fa_enabled'] == 1) ? 'status-dot--on' : 'status-dot--off' ?>"></span>
+                </a>
+            </li>
+
             <!-- ── القوائم البيضاء ── -->
             <li class="shield-nav__title">القوائم البيضاء</li>
 
@@ -154,7 +164,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                 $lquery3 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
                 $lcount3 = $lquery3 ? mysqli_num_rows($lquery3) : 0;
                 $lquery4 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Proxy'");
-                $lcount4 = $lquery4 ? mysqli_num_rows($lquery4) : 0;
+                $lcount4 = $lquery4 ? mysqli_num_rows($lcount4) : 0;
                 $lquery5 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `type`='Spammer'");
                 $lcount5 = $lquery5 ? mysqli_num_rows($lquery5) : 0;
 

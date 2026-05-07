@@ -49,13 +49,13 @@ foreach ($files as $file) {
 <?php
 $date   = date('d F Y');
 
-$query  = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='SQLi'");
+$query  = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date`='$date' AND `type`='SQLi'");
 $count  = mysqli_num_rows($query);
-$query2 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Bad Bot' or `type`='Fake Bot' or type='Missing User-Agent header' or type='Missing header Accept' or type='Invalid IP Address header'");
+$query2 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date`='$date' AND (`type`='Bad Bot' OR `type`='Fake Bot' OR type='Missing User-Agent header' OR type='Missing header Accept' OR type='Invalid IP Address header')");
 $count2 = mysqli_num_rows($query2);
-$query3 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Proxy'");
+$query3 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date`='$date' AND `type`='Proxy'");
 $count3 = mysqli_num_rows($query3);
-$query4 = $mysqli->query("SELECT * FROM `psec_logs` WHERE `date`='$date' AND `type`='Spammer'");
+$query4 = $mysqli->query("SELECT id FROM `psec_logs` WHERE `date`='$date' AND `type`='Spammer'");
 $count4 = mysqli_num_rows($query4);
 ?>
                  <div class="row">
