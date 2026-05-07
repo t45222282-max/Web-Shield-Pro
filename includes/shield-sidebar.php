@@ -51,15 +51,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
                 </a>
             </li>
 
-            <li class="shield-nav__item">
-                <a href="settings-2fa.php"
-                   class="shield-nav__link <?= ($current_page === 'settings-2fa.php') ? 'is-active' : '' ?>"
-                   data-label="المصادقة الثنائية">
-                    <i data-lucide="key-round" class="icon icon-sm"></i>
-                    <span>المصادقة الثنائية</span>
-                    <span class="status-dot <?= (!empty($settings['2fa_enabled']) && $settings['2fa_enabled'] == 1) ? 'status-dot--on' : 'status-dot--off' ?>"></span>
-                </a>
-            </li>
+
 
             <!-- ── القوائم البيضاء ── -->
             <li class="shield-nav__title">القوائم البيضاء</li>

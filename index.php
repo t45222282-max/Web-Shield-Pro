@@ -92,13 +92,8 @@ if (isset($_POST['signin'])) {
         if (mysqli_num_rows($checklh) == 0) {
             $log = $mysqli->query("INSERT INTO `psec_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '1')"  );
         }
-        if (isset($settings['2fa_enabled']) && $settings['2fa_enabled'] == 1) {
-            $_SESSION['sec-2fa-pending'] = $username;
-            echo '<meta http-equiv="refresh" content="0;url=login-2fa.php">';
-        } else {
-            $_SESSION['sec-username'] = $username;
-            echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
-        }
+        $_SESSION['sec-username'] = $username;
+        echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
     } else {
         $checklh = $mysqli->query("SELECT id FROM `psec_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='0'");
         if (mysqli_num_rows($checklh) == 0) {
@@ -174,13 +169,9 @@ if (isset($_POST['signin'])) {
             $log = $mysqli->query("INSERT INTO `psec_logins` (username, ip, date, time, successful) VALUES ('$username', '$ip', '$date', '$time', '1')");
         }
         
-        if (isset($settings['2fa_enabled']) && $settings['2fa_enabled'] == 1) {
-            $_SESSION['sec-2fa-pending'] = $username;
-            echo '<meta http-equiv="refresh" content="0;url=login-2fa.php">';
-        } else {
-            $_SESSION['sec-username'] = $username;
-            echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
-        }
+        $_SESSION['sec-username'] = $username;
+        
+        echo '<meta http-equiv="refresh" content="0;url=dashboard.php">';
     } else {
         $checklh = $mysqli->query("SELECT id FROM `psec_logins` WHERE `username`='$username' AND ip='$ip' AND date='$date' AND time='$time' AND successful='0'");
         if (mysqli_num_rows($checklh) == 0) {

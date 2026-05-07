@@ -21,16 +21,8 @@ if (isset($_SESSION['sec-username'])) {
         exit;
     }
 } else {
-    $current_page = basename($_SERVER['SCRIPT_NAME']);
-    if ($current_page == 'login-2fa.php') {
-        if (!isset($_SESSION['sec-2fa-pending'])) {
-            echo '<meta http-equiv="refresh" content="0; url=index.php" />';
-            exit;
-        }
-    } else {
-        echo '<meta http-equiv="refresh" content="0; url=index.php" />';
-        exit;
-    }
+    echo '<meta http-equiv="refresh" content="0; url=index.php" />';
+    exit;
 }
 
 if (basename($_SERVER['SCRIPT_NAME']) != 'warning-pages.php') {
